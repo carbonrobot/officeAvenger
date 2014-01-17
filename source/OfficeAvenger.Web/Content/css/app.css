@@ -7,3 +7,9 @@
 .top-bar .name h1 a {
     display: inline-block;
 }
+
+/* Typography */
+span.small { 
+    font-size: smaller;
+    font-weight: 200;
+}
