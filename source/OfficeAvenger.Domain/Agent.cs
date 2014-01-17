@@ -29,9 +29,6 @@ namespace OfficeAvenger.Domain
             get { return _passwordHash; }
             set
             {
-                if (string.IsNullOrWhiteSpace(value))
-                    throw new ArgumentNullException("PasswordHash");
-
                 _passwordHash = value;
             }
         }

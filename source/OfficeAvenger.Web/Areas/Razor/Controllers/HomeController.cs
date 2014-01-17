@@ -23,7 +23,14 @@ namespace OfficeAvenger.Web.Areas.Razor.Controllers
             {
                 TempData["LOGIN_ERROR"] = "Invalid. Do not fail again.";
             }
-            return new RedirectResult("Index");
+            return new RedirectResult("/Razor");
+        }
+
+        [HttpGet]
+        public ActionResult Logout()
+        {
+            OfficeAvenger.Web.Security.Shield.Signout();
+            return new RedirectResult("/Razor");
         }
 
     }

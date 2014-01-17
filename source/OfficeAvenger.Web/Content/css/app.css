@@ -13,3 +13,8 @@ span.small {
     font-size: smaller;
     font-weight: 200;
 }
+
+img.avatar { 
+    width: 32px;
+    height:32px;
+}

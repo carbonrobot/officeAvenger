@@ -143,6 +143,7 @@
     <Content Include="Content\css\foundation\foundation.css" />
     <Content Include="Content\css\foundation\foundation.mvc.css" />
     <Content Include="Content\css\foundation\normalize.css" />
+    <Content Include="Content\images\agent.jpg" />
     <Content Include="Content\images\logo.png" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\app.js" />
@@ -222,6 +223,9 @@
       <Project>{06ef0011-a04b-418f-848d-fe9fc1e89a2d}</Project>
       <Name>OfficeAvenger.Web.Security</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Razor\Views\Shared\_Agent.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

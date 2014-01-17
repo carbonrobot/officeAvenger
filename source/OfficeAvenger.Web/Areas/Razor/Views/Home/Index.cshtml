@@ -6,6 +6,7 @@
 
 @if (User.Identity.IsAuthenticated)
 {
+    @Html.Partial("_Agent")
     @Html.Partial("_Missions")
     @Html.Partial("_Avengers")
 }

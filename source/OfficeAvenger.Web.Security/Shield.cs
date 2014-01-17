@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web;
 using System.Web.Security;
 using Newtonsoft.Json;
+using OfficeAvenger.Domain;
 
 namespace OfficeAvenger.Web.Security
 {
@@ -14,7 +11,29 @@ namespace OfficeAvenger.Web.Security
     /// </summary>
     public static class Shield
     {
-        private static ISecurityMatrix SecurityMatrix;
+        public static Agent ActiveAgent
+        {
+            get
+            {
+                // TODO: add caching support
+                if (!HttpContext.Current.User.Identity.IsAuthenticated)
+                    return null;
+                
+                var cookie = HttpContext.Current.Request.Cookies[FormsAuthentication.FormsCookieName];
+                if (cookie == null)
+                    return null;
+
+                var ticket = FormsAuthentication.Decrypt(cookie.Value);
+                if (ticket == null)
+                    return null;
+
+                var agent = JsonConvert.DeserializeObject<Agent>(ticket.UserData);
+                if (agent == null)
+                    return null;
+
+                return agent;
+            }
+        }
 
         /// <summary>
         /// Authenticates the current agent. If successful, creates an encrypted security token storing the agents basic information.
@@ -62,5 +81,14 @@ namespace OfficeAvenger.Web.Security
             Shield.SecurityMatrix = matrix;
         }
 
+        /// <summary>
+        /// Sign the agent out of the matrix
+        /// </summary>
+        public static void Signout()
+        {
+            FormsAuthentication.SignOut();
+        }
+
+        private static ISecurityMatrix SecurityMatrix;
     }
 }
