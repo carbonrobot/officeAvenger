@@ -14,12 +14,12 @@ namespace OfficeAvenger.Web
     {
         protected void Application_Start()
         {
-            // configure logging...
-
+            LoggingConfig.InitializeLogger();
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            SecurityConfig.Register();
         }
 
         protected void Application_BeginRequest()

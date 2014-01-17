@@ -18,8 +18,11 @@ namespace OfficeAvenger.Web.Areas.Razor.Controllers
         [HttpPost]
         public ActionResult Login(string username, string password)
         {
-            //FormsAuthentication.SetAuthCookie(username, true);
-
+            var authenticated = OfficeAvenger.Web.Security.Shield.Authenticate(username, password, true);
+            if (!authenticated)
+            {
+                TempData["LOGIN_ERROR"] = "Invalid. Do not fail again.";
+            }
             return new RedirectResult("Index");
         }
 

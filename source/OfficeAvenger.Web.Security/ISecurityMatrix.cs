@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace OfficeAvenger.Web.Security
 {
-    public class Class1
+    public interface ISecurityMatrix
     {
+        AuthenticationResult Authenticate(string username, string password);
     }
 }

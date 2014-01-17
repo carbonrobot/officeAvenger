@@ -3,17 +3,23 @@
     <div class="small-4 small-offset-4 column">
         
         <h4>Login</h4>
+        @if(TempData["LOGIN_ERROR"] != null){
+        <div class="alert-box warning">
+          @TempData["LOGIN_ERROR"]
+          <a href="#" class="close">&times;</a>
+        </div>
+        }
         <div class="panel">
             <div class="row">
                 <div class="small-12 column">
                     <label>Username</label>
-                    <input type="text" placeholder="comic" />
+                    <input type="text" placeholder="comic" name="username" />
                 </div>
             </div>
             <div class="row">
                 <div class="small-12 column">
                     <label>Password</label>
-                    <input type="text" placeholder="superstar" />
+                    <input type="text" placeholder="superstar" name="password" />
                 </div>
             </div>
             <div class="row">

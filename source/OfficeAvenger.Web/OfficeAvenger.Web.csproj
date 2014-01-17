@@ -127,6 +127,7 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\LoggingConfig.cs" />
+    <Compile Include="App_Start\SecurityConfig.cs" />
     <Compile Include="Areas\Razor\Controllers\HomeController.cs" />
     <Compile Include="Areas\Razor\RazorAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -215,6 +216,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Razor\Views\Shared\_Login.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OfficeAvenger.Web.Security\OfficeAvenger.Web.Security.csproj">
+      <Project>{06ef0011-a04b-418f-848d-fe9fc1e89a2d}</Project>
+      <Name>OfficeAvenger.Web.Security</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

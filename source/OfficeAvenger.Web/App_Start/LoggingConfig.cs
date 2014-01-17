@@ -7,10 +7,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace OfficeAvenger.Web.App_Start
+namespace OfficeAvenger.Web
 {
     public static class LoggingConfig
     {
-        
+        public static void InitializeLogger()
+        {
+
+        }
     }
 }

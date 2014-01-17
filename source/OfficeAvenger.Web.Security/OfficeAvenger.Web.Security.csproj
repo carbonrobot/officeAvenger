@@ -30,8 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -39,8 +43,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="AuthenticationResult.cs" />
+    <Compile Include="ISecurityMatrix.cs" />
+    <Compile Include="LazySecurityMatrix.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Shield.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OfficeAvenger.Domain\OfficeAvenger.Domain.csproj">
+      <Project>{123a90c4-9117-4b3f-b60f-085677b694a4}</Project>
+      <Name>OfficeAvenger.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
