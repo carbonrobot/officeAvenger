@@ -1,0 +1,9 @@
+/* Site logo */
+.top-bar .name img {
+    width: 24px;
+    height: 24px;
+    margin-left: 10px;
+}
+.top-bar .name h1 a {
+    display: inline-block;
+}
