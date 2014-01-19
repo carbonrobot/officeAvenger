@@ -1,20 +1,47 @@
 /* Site logo */
-.top-bar .name img {
+.top-bar .name img
+{
     width: 24px;
     height: 24px;
     margin-left: 10px;
 }
-.top-bar .name h1 a {
+
+.top-bar .name h1 a
+{
     display: inline-block;
 }
 
 /* Typography */
-span.small { 
+span.small
+{
     font-size: smaller;
     font-weight: 200;
 }
 
-img.avatar { 
-    width: 32px;
-    height:32px;
+img.avatar
+{
+    width: 48px;
+    height: 48px;
+}
+
+.agent-panel img.avatar
+{
+    margin-right: 15px;
+}
+
+/* Clearfix */
+.clearfix
+{
+    *zoom: 1;
+}
+
+.clearfix:before, .clearfix:after
+{
+    content: " ";
+    display: table;
+}
+
+.clearfix:after
+{
+    clear: both;
 }
