@@ -129,6 +129,8 @@
     <Compile Include="App_Start\LoggingConfig.cs" />
     <Compile Include="App_Start\SecurityConfig.cs" />
     <Compile Include="Areas\Razor\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Razor\Controllers\TeamController.cs" />
+    <Compile Include="Areas\Razor\Models\EditTeamModel.cs" />
     <Compile Include="Areas\Razor\RazorAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -179,7 +181,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Razor\Models\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -219,6 +220,10 @@
     <Content Include="Areas\Razor\Views\Shared\_Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OfficeAvenger.Domain\OfficeAvenger.Domain.csproj">
+      <Project>{123a90c4-9117-4b3f-b60f-085677b694a4}</Project>
+      <Name>OfficeAvenger.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OfficeAvenger.Web.Security\OfficeAvenger.Web.Security.csproj">
       <Project>{06ef0011-a04b-418f-848d-fe9fc1e89a2d}</Project>
       <Name>OfficeAvenger.Web.Security</Name>
@@ -226,6 +231,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Razor\Views\Shared\_Agent.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Razor\Views\Team\Edit.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
