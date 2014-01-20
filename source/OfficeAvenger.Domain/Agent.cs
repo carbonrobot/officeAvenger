@@ -4,7 +4,7 @@ namespace OfficeAvenger.Domain
     /// <summary>
     /// Typical cubical bound office prisoner
     /// </summary>
-    public class Agent
+    public class Agent : Entity
     {
         /// <summary>
         /// Gets or sets the name of this prisoner

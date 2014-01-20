@@ -2,22 +2,15 @@
 
 namespace OfficeAvenger.Domain
 {
-    public class Avenger
-    {
+    /// <summary>
+    /// An instance of the mighty Avengers team
+    /// </summary>
+    public class Avenger : AgentOwnedEntity
+    {   
         /// <summary>
         /// Gets or sets the path to the avatar
         /// </summary>
-        public string Avatar
-        {
-            get
-            {
-                return _avatar;
-            }
-            set
-            {
-                _avatar = value;
-            }
-        }
+        public string Avatar { get; set; }
 
         /// <summary>
         /// Gets or sets the name
@@ -37,7 +30,6 @@ namespace OfficeAvenger.Domain
             }
         }
 
-        private string _avatar;
         private string _name;
     }
 }

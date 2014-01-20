@@ -1,29 +1,32 @@
-﻿@{
-    ViewBag.Title = "Edit Team";
+﻿@model OfficeAvenger.Web.Areas.Razor.Models.EditTeamViewModel
+@{
+    ViewBag.Title = Title();
 }
 
 <form action="/razor/team/edit" method="post">
+    @Html.HiddenFor(m => m.Avenger.Id)
+    @Html.HiddenFor(m => m.Avenger.AgentId)
     <div class="row">
     <div class="small-4 small-offset-4 column">
         
-        <h4>Edit Team</h4>
+        <h4>@Title()</h4>
         @Html.Partial("_Messages")
         <div class="panel">
             <div class="row">
                 <div class="small-12 column">
-                    <label>Username</label>
-                    <input type="text" placeholder="comic" name="username" />
+                    <label>Name</label>
+                    @Html.TextBoxFor(m => m.Avenger.Name, new { placeholder = "Avenger Code Name", autofocus="autofocus" })
                 </div>
             </div>
             <div class="row">
                 <div class="small-12 column">
-                    <label>Password</label>
-                    <input type="text" placeholder="superstar" name="password" />
+                    <label>Avatar</label>
+                    @Html.TextBoxFor(m => m.Avenger.Avatar, new { placeholder = "Avatar URL Path" })
                 </div>
             </div>
             <div class="row">
                 <div class="small-12 column">
-                    <input type="submit" class="small button right" value="Login" />
+                    <input type="submit" class="small button right" value="@Action()" />
                 </div>
             </div>
         </div>
@@ -31,3 +34,9 @@
     </div>
 </div>
 </form>
+@helper Title(){
+    @(Model.Avenger.Id > 0 ? "Edit Team" : "Add Team Member")
+}
+@helper Action(){
+    @(Model.Avenger.Id > 0 ? "Update" : "Create")
+}
