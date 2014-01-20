@@ -7,7 +7,7 @@ using System.Web.Security;
 
 namespace OfficeAvenger.Web.Areas.Razor.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : UnderworldController
     {
         [HttpGet]
         public ActionResult Index()
@@ -21,9 +21,9 @@ namespace OfficeAvenger.Web.Areas.Razor.Controllers
             var authenticated = OfficeAvenger.Web.Security.Shield.Authenticate(username, password, true);
             if (!authenticated)
             {
-                TempData["LOGIN_ERROR"] = "Invalid. Do not fail again.";
+                return WithError(this.RedirectToAction("Index"), "Incorrect. Do not fail again.");
             }
-            return new RedirectResult("/Razor");
+            return this.RedirectToAction("Index");
         }
 
         [HttpGet]

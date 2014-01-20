@@ -9,6 +9,7 @@ namespace OfficeAvenger.Web.Areas.Razor.Controllers
 {
     public class TeamController : Controller
     {
+        [HttpGet]
         public ActionResult Add()
         {
             return View("Edit");

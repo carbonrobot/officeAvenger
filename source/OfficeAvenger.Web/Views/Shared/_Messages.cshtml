@@ -1,0 +1,21 @@
+﻿@if (TempData["UI_ERROR"] != null)
+{
+    <div class="alert-box warning">
+        @TempData["UI_ERROR"]
+        <a href="#" class="close">&times;</a>
+    </div>
+}
+@if (TempData["UI_INFO"] != null)
+{
+    <div class="alert-box">
+        @TempData["UI_INFO"]
+        <a href="#" class="close">&times;</a>
+    </div>
+}
+@if (TempData["UI_SUCCESS"] != null)
+{
+    <div class="alert-box success">
+        @TempData["UI_SUCCESS"]
+        <a href="#" class="close">&times;</a>
+    </div>
+}

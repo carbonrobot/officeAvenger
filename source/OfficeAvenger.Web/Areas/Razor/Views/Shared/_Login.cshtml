@@ -3,12 +3,7 @@
     <div class="small-4 small-offset-4 column">
         
         <h4>Login</h4>
-        @if(TempData["LOGIN_ERROR"] != null){
-        <div class="alert-box warning">
-          @TempData["LOGIN_ERROR"]
-          <a href="#" class="close">&times;</a>
-        </div>
-        }
+        @Html.Partial("_Messages")
         <div class="panel">
             <div class="row">
                 <div class="small-12 column">

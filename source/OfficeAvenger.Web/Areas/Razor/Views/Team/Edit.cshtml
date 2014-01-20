@@ -2,6 +2,32 @@
     ViewBag.Title = "Edit Team";
 }
 
-<form>
-    
+<form action="/razor/team/edit" method="post">
+    <div class="row">
+    <div class="small-4 small-offset-4 column">
+        
+        <h4>Edit Team</h4>
+        @Html.Partial("_Messages")
+        <div class="panel">
+            <div class="row">
+                <div class="small-12 column">
+                    <label>Username</label>
+                    <input type="text" placeholder="comic" name="username" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-12 column">
+                    <label>Password</label>
+                    <input type="text" placeholder="superstar" name="password" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-12 column">
+                    <input type="submit" class="small button right" value="Login" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
 </form>
