@@ -18,18 +18,28 @@ namespace OfficeAvenger.Services
         }
 
         /// <summary>
+        /// Gets the active missions for this agent
+        /// </summary>
+        /// <param name="agentId">The agent identifier.</param>
+        /// <returns>ServiceResponse{IList{Mission}}.</returns>
+        public ServiceResponse<IList<Mission>> GetActiveMissions(int agentId)
+        {
+            Func<IList<Mission>> func = () =>
+            {
+                return this.Context.AsQueryable<Mission>().Where(x => x.AgentId == agentId && x.EndDateTime >= DateTime.UtcNow).ToList();
+            };
+            return this.Execute(func);
+        }
+
+        /// <summary>
         /// Gets the avenger.
         /// </summary>
         /// <param name="id">The identifier.</param>
+        /// <param name="agentId">The agent identifier.</param>
         /// <returns>ServiceResponse{Avenger}.</returns>
         public ServiceResponse<Avenger> GetAvenger(int id, int agentId)
         {
-            Func<Avenger> func = () =>
-            {
-                var entity = this.Context.AsQueryable<Avenger>().Single(x => x.Id == id && x.AgentId == agentId);
-                return entity;
-            };
-            return this.Execute(func);
+            return GetSecureInformation<Avenger>(id, agentId);
         }
 
         /// <summary>
@@ -47,33 +57,34 @@ namespace OfficeAvenger.Services
         }
 
         /// <summary>
+        /// Gets the mission.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="agentId">The agent identifier.</param>
+        /// <returns>ServiceResponse{Mission}.</returns>
+        public ServiceResponse<Mission> GetMission(int id, int agentId)
+        {
+            return GetSecureInformation<Mission>(id, agentId);
+        }
+
+        /// <summary>
         /// Updates the avenger or creates a new one if it does not exist
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <returns>ServiceResponse{Avenger}.</returns>
         public ServiceResponse<Avenger> UpdateAvenger(Avenger entity, int agentId)
         {
-            Func<Avenger> func = () =>
-            {
-                // if this is an update, verify security first
-                if (entity.Id > 0)
-                {
-                    var updateAllowed = this.Context.AsQueryable<Avenger>().Any(x => x.Id == entity.Id && x.AgentId == agentId);
-                    if (updateAllowed)
-                    {
-                        return this.Context.Save(entity);
-                    }
-                    else
-                    {
-                        throw new ArgumentOutOfRangeException("agentId", "Unauthorized access detected.");
-                    }
-                }
-                else
-                {
-                    return this.Context.Save(entity);
-                }
-            };
-            return this.Execute(func);
+            return UpdateSecureInformation(entity, agentId);
+        }
+
+        /// <summary>
+        /// Updates the avenger or creates a new one if it does not exist
+        /// </summary>
+        /// <param name="entity">The entity.</param>
+        /// <returns>ServiceResponse{Avenger}.</returns>
+        public ServiceResponse<Mission> UpdateMission(Mission entity, int agentId)
+        {
+            return UpdateSecureInformation(entity, agentId);
         }
 
         /// <summary>
@@ -99,6 +110,55 @@ namespace OfficeAvenger.Services
                 response.Exception = ex;
             }
             return response;
+        }
+
+        /// <summary>
+        /// Checks the security.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="entity">The entity.</param>
+        /// <param name="agentId">The agent identifier.</param>
+        private void CheckSecurity<T>(T entity, int agentId) where T : AgentOwnedEntity
+        {
+            var updateAllowed = this.Context.AsQueryable<T>().Any(x => x.Id == entity.Id && x.AgentId == agentId);
+            if (!updateAllowed)
+                throw new ArgumentOutOfRangeException("agentId", "Unauthorized access detected.");
+        }
+
+        /// <summary>
+        /// Gets the secure information from the server
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="id">The identifier.</param>
+        /// <param name="agentId">The agent identifier.</param>
+        /// <returns>ServiceResponse{``0}.</returns>
+        private ServiceResponse<T> GetSecureInformation<T>(int id, int agentId) where T : AgentOwnedEntity
+        {
+            Func<T> func = () =>
+            {
+                var entity = this.Context.AsQueryable<T>().Single(x => x.Id == id && x.AgentId == agentId);
+                return entity;
+            };
+            return this.Execute(func);
+        }
+
+        /// <summary>
+        /// Updates the secure information store
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="entity">The entity.</param>
+        /// <param name="agentId">The agent identifier.</param>
+        /// <returns>ServiceResponse{``0}.</returns>
+        private ServiceResponse<T> UpdateSecureInformation<T>(T entity, int agentId) where T : AgentOwnedEntity
+        {
+            Func<T> func = () =>
+            {
+                if (entity.Id > 0)
+                    CheckSecurity(entity, agentId);
+
+                return this.Context.Save(entity);
+            };
+            return this.Execute(func);
         }
 
         private IDataContext Context;
