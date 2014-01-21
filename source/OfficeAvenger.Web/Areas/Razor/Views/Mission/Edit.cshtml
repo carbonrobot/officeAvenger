@@ -3,19 +3,20 @@
     ViewBag.Title = Title();
 }
 
-<form action="/razor/mission/edit" method="post">
-    @Html.HiddenFor(m => m.Mission.Id)
-    @Html.HiddenFor(m => m.Mission.AgentId)
-    <div class="row">
+
+<div class="row">
     <div class="small-4 small-offset-4 column">
-        
+
         <h4>@Title()</h4>
         @Html.Partial("_Messages")
         <div class="panel">
+            <form action="/razor/mission/edit" method="post">
+            @Html.HiddenFor(m => m.Mission.Id)
+            @Html.HiddenFor(m => m.Mission.AgentId)
             <div class="row">
                 <div class="small-12 column">
                     <label>Mission Description</label>
-                    @Html.TextBoxFor(m => m.Mission.Name, new { placeholder = "Mission Description", autofocus="autofocus" })
+                    @Html.TextBoxFor(m => m.Mission.Name, new { placeholder = "Mission Description", autofocus = "autofocus" })
                 </div>
             </div>
             <div class="row">
@@ -29,15 +30,60 @@
                     <input type="submit" class="small button right" value="@Action()" />
                 </div>
             </div>
+            </form>
+
+            @if (Model.Mission.Id > 0)
+            {
+                <h5>Selected Team</h5>
+                if (Model.Mission.Team.Count > 0)
+                {
+                <div class="clearfix">
+                    @foreach (var hero in Model.Mission.Team)
+                    {
+                        <form action="/razor/mission/remove" method="post" class="inline">
+                        @Html.Hidden("missionId", Model.Mission.Id)
+                        @Html.Hidden("avengerId", hero.Id)
+                        <img src="@hero.Avatar" class="avatar" onclick="$(this).closest('form').submit();" />
+                        </form>
+                    }
+                </div>
+                }
+                else
+                {
+                    <div class="alert-box">
+                        Choose your team members for this mission.
+                        <a href="#" class="close">&times;</a>
+                    </div>
+                }
+            }
+
+            @if (Model.ReadyTeam != null)
+            {
+                <h5 class="drop">On Standby</h5>
+                <div class="clearfix">
+                    @foreach (var hero in Model.ReadyTeam)
+                    {
+                        <form action="/razor/mission/assign" method="post" class="inline">
+                        @Html.Hidden("missionId", Model.Mission.Id)
+                        @Html.Hidden("avengerId", hero.Id)
+                        <img src="@hero.Avatar" class="avatar" onclick="$(this).closest('form').submit();" />
+                        </form>
+                    }
+                </div>
+            }
         </div>
         <a class="button" href="/razor">Return to Base (RTB)</a>
 
     </div>
 </div>
-</form>
-@helper Title(){
+
+
+
+@helper Title()
+{
     @(Model.Mission.Id > 0 ? "Edit Mission" : "Add Mission")
 }
-@helper Action(){
+@helper Action()
+{
     @(Model.Mission.Id > 0 ? "Update" : "Create")
 }

@@ -30,7 +30,11 @@ namespace OfficeAvenger.Web.Areas.Razor.Controllers
             if (response.HasError)
                 return WithError(this.RedirectToAction("Index", "Home"), "Failed to retrieve the specified Avenger");
 
-            var model = new EditMissionViewModel(response.Result);
+            var avengersResponse = this.DataService.GetAvengers(Shield.ActiveAgent.Id);
+            if (avengersResponse.HasError)
+                ShowError("Failed to retrieve the list of Avengers");
+
+            var model = new EditMissionViewModel(response.Result, avengersResponse.Result);
             return View(model);
         }
 
@@ -42,8 +46,30 @@ namespace OfficeAvenger.Web.Areas.Razor.Controllers
                 return WithError(View(model), "Do not submit invalid information!");
 
             return WithSuccess(RedirectToAction("Edit", new { id = response.Result.Id }), "Mission profile has been updated.");
-            //return WithSuccess(RedirectToAction("Index", "Home"), "Ready to {0}".FormatWith(model.Mission.Name));
         }
 
+        [HttpPost]
+        public ActionResult Assign(int missionId, int avengerId)
+        {
+            var response = this.DataService.AssignAvenger(missionId, avengerId, Shield.ActiveAgent.Id);
+            
+            var action = RedirectToAction("Edit", new { id = missionId });
+            if (response.HasError)
+                return WithError(action, "Do not submit invalid information!");
+
+            return WithSuccess(action, "Avenger has been assigned to support this mission");
+        }
+
+        [HttpPost]
+        public ActionResult Remove(int missionId, int avengerId)
+        {
+            var response = this.DataService.RemoveAvenger(missionId, avengerId, Shield.ActiveAgent.Id);
+
+            var action = RedirectToAction("Edit", new { id = missionId });
+            if (response.HasError)
+                return WithError(action, "Do not submit invalid information!");
+
+            return WithSuccess(action, "Avenger has been removed from this mission");
+        }
     }
 }

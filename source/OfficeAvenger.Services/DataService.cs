@@ -18,6 +18,26 @@ namespace OfficeAvenger.Services
         }
 
         /// <summary>
+        /// Assigns the avenger to the specified mission. Whether they like it or not.
+        /// </summary>
+        /// <param name="missionId">The mission identifier.</param>
+        /// <param name="avengerId">The avenger identifier.</param>
+        /// <param name="agentId">The agent identifier.</param>
+        /// <returns>ServiceResponse.</returns>
+        public ServiceResponse AssignAvenger(int missionId, int avengerId, int agentId)
+        {
+            Action action = () =>
+            {
+                var mission = this.Context.AsQueryable<Mission>().Single(x => x.Id == missionId && x.AgentId == agentId);
+                var hero = this.Context.AsQueryable<Avenger>().Single(x => x.Id == avengerId && x.AgentId == agentId);
+
+                mission.Team.Add(hero);
+                this.Context.Save(mission);
+            };
+            return this.Execute(action);
+        }
+
+        /// <summary>
         /// Gets the active missions for this agent
         /// </summary>
         /// <param name="agentId">The agent identifier.</param>
@@ -26,7 +46,7 @@ namespace OfficeAvenger.Services
         {
             Func<IList<Mission>> func = () =>
             {
-                return this.Context.AsQueryable<Mission>().Where(x => x.AgentId == agentId && x.MissionEnd >= DateTime.UtcNow).ToList();
+                return this.Context.AsQueryable<Mission>().Where(x => x.AgentId == agentId).ToList();
             };
             return this.Execute(func);
         }
@@ -64,7 +84,35 @@ namespace OfficeAvenger.Services
         /// <returns>ServiceResponse{Mission}.</returns>
         public ServiceResponse<Mission> GetMission(int id, int agentId)
         {
-            return GetSecureInformation<Mission>(id, agentId);
+            Func<Mission> func = () =>
+            {
+                var entity = this.Context
+                    .AsQueryable<Mission>(m => m.Team)
+                    .Single(x => x.Id == id && x.AgentId == agentId);
+
+                return entity;
+            };
+            return this.Execute(func);
+        }
+
+        /// <summary>
+        /// Removes the avenger from the specified mission. Take a seat, sucker.
+        /// </summary>
+        /// <param name="missionId">The mission identifier.</param>
+        /// <param name="avengerId">The avenger identifier.</param>
+        /// <param name="agentId">The agent identifier.</param>
+        /// <returns>ServiceResponse.</returns>
+        public ServiceResponse RemoveAvenger(int missionId, int avengerId, int agentId)
+        {
+            Action action = () =>
+            {
+                var mission = this.Context.AsQueryable<Mission>().Single(x => x.Id == missionId && x.AgentId == agentId);
+                var hero = this.Context.AsQueryable<Avenger>().Single(x => x.Id == avengerId && x.AgentId == agentId);
+
+                mission.Team.Remove(hero);
+                this.Context.Save(mission);
+            };
+            return this.Execute(action);
         }
 
         /// <summary>
@@ -106,6 +154,30 @@ namespace OfficeAvenger.Services
                 this.Log().Error(() => ex.ToString());
 
                 response.Result = default(T);
+                response.HasError = true;
+                response.Exception = ex;
+            }
+            return response;
+        }
+
+        /// <summary>
+        /// Executes a given action while isolating exception handling
+        /// </summary>
+        /// <typeparam name="T">The type of the result</typeparam>
+        /// <param name="action">The method to execute</param>
+        protected ServiceResponse Execute(Action action)
+        {
+            var response = new ServiceResponse();
+            try
+            {
+                action.Invoke();
+                response.HasError = false;
+                response.Exception = null;
+            }
+            catch (Exception ex)
+            {
+                this.Log().Error(() => ex.ToString());
+
                 response.HasError = true;
                 response.Exception = ex;
             }

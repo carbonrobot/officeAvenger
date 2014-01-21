@@ -15,20 +15,35 @@ namespace OfficeAvenger.Web.Areas.Razor.Controllers
 
         public ActionResult WithError(ActionResult result, string message)
         {
-            TempData[UI_ERROR_KEY] = message;
+            ShowError(message);
             return result;
         }
 
         public ActionResult WithInfo(ActionResult result, string message)
         {
-            TempData[UI_INFO_KEY] = message;
+            ShowInfo(message);
             return result;
         }
 
         public ActionResult WithSuccess(ActionResult result, string message)
         {
-            TempData[UI_SUCCESS_KEY] = message;
+            ShowSuccess(message);
             return result;
+        }
+
+        public void ShowError(string message)
+        {
+            TempData[UI_ERROR_KEY] = message;
+        }
+
+        public void ShowInfo(string message)
+        {
+            TempData[UI_INFO_KEY] = message;
+        }
+
+        public void ShowSuccess(string message)
+        {
+            TempData[UI_SUCCESS_KEY] = message;
         }
 
         public const string UI_ERROR_KEY = "UI_ERROR";

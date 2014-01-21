@@ -15,6 +15,10 @@
 
     .clearfix:after { clear: both; }
 
+.inline { display: inline-block; zoom: *1; }
+
 .team-member { margin-bottom: 10px; }
 
 .team-member-name { margin-top: 15px; }
+
+.drop { margin-top: 15px; }
