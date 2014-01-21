@@ -7,6 +7,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using OfficeAvenger.Services.Logging;
 
 namespace OfficeAvenger.Web
 {
@@ -24,6 +25,7 @@ namespace OfficeAvenger.Web
 
         protected void Application_BeginRequest()
         {
+            this.Log().Info(() => "Application startup");
             MiniProfiler.Start();
         }
 

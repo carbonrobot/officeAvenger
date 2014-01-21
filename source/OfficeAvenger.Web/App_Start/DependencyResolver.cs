@@ -56,10 +56,6 @@ namespace OfficeAvenger.Web
             kernel
                 .Bind<OfficeAvenger.Services.IDataContext>()
                 .To<OfficeAvenger.Domain.Data.DataContext>();
-
-            kernel
-                .Bind<OfficeAvenger.Services.Logging.ILog>()
-                .To<OfficeAvenger.Services.Logging.NLogLog>();
         }        
     }
 }
