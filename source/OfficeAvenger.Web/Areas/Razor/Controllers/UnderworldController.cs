@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Ninject;
+using OfficeAvenger.Services;
 
 namespace OfficeAvenger.Web.Areas.Razor.Controllers
 {
     public class UnderworldController : Controller
     {
+        [Inject]
+        public DataService DataService { get; set; }
+
         public ActionResult WithError(ActionResult result, string message)
         {
             TempData[UI_ERROR_KEY] = message;

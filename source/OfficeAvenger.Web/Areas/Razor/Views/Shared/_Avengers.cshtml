@@ -1,14 +1,18 @@
-﻿<div class="row">
+﻿@model IList<OfficeAvenger.Domain.Avenger>
+<div class="row">
     <div class="large-12 columns">
         <h4>Avengers</h4>
-        <ul class="no-bullet">
-            <li>Captain America</li>
-            <li>Iron Man</li>
-            <li>Thor</li>
-            <li>Henry Pym</li>
-            <li>The Wasp</li>
-            <li>Hulk</li>
-        </ul>
-        <a href="/razor/team/add">New Team Member</a>
+        @foreach (var hero in this.Model)
+        {
+            <div class="team-member clearfix">
+                <div class="left">
+                    <img src="@hero.Avatar" class="avatar" />
+                </div>
+                <div class="left team-member-name">
+                    <a href="/razor/team/@hero.Id/edit">@hero.Name</a>
+                </div>
+            </div>
+        }
+        <a class="button" href="/razor/team/add">New Team Member</a>
     </div>
 </div>

@@ -43,6 +43,14 @@
     <Reference Include="Antlr3.Runtime">
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="MiniProfiler">
       <HintPath>..\packages\MiniProfiler.2.1.0\lib\net40\MiniProfiler.dll</HintPath>
@@ -53,6 +61,15 @@
     </Reference>
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.0.1.10\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Common">
+      <HintPath>..\packages\Ninject.Web.Common.3.0.0.7\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Mvc">
+      <HintPath>..\packages\Ninject.MVC3.3.0.0.6\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\packages\NLog.2.1.0\lib\net45\NLog.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -120,6 +137,9 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="WebActivator">
+      <HintPath>..\packages\WebActivator.1.5.3\lib\net40\WebActivator.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease">
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
     </Reference>
@@ -127,11 +147,13 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\LoggingConfig.cs" />
+    <Compile Include="App_Start\DependencyResolver.cs" />
     <Compile Include="App_Start\SecurityConfig.cs" />
     <Compile Include="Areas\Razor\Controllers\HomeController.cs" />
     <Compile Include="Areas\Razor\Controllers\TeamController.cs" />
     <Compile Include="Areas\Razor\Controllers\UnderworldController.cs" />
-    <Compile Include="Areas\Razor\Models\EditTeamModel.cs" />
+    <Compile Include="Areas\Razor\Models\EditTeamViewModel.cs" />
+    <Compile Include="Areas\Razor\Models\HomeViewModel.cs" />
     <Compile Include="Areas\Razor\RazorAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -221,9 +243,25 @@
     <Content Include="Areas\Razor\Views\Shared\_Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OfficeAvenger.Domain.Data\OfficeAvenger.Domain.Data.csproj">
+      <Project>{8448368f-4189-421b-a77a-814cc7600b04}</Project>
+      <Name>OfficeAvenger.Domain.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OfficeAvenger.Domain\OfficeAvenger.Domain.csproj">
       <Project>{123a90c4-9117-4b3f-b60f-085677b694a4}</Project>
       <Name>OfficeAvenger.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OfficeAvenger.Services.Logging\OfficeAvenger.Services.Logging.csproj">
+      <Project>{83ba81e1-b8b5-4b6e-a831-fcb02a4d9c01}</Project>
+      <Name>OfficeAvenger.Services.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OfficeAvenger.Services\OfficeAvenger.Services.csproj">
+      <Project>{9702a96a-403d-42d5-87f6-3c7869d2b087}</Project>
+      <Name>OfficeAvenger.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OfficeAvenger.Tests.Fixtures\OfficeAvenger.Tests.Fixtures.csproj">
+      <Project>{7b583491-9e19-438a-ba97-2a77b2a06f30}</Project>
+      <Name>OfficeAvenger.Tests.Fixtures</Name>
     </ProjectReference>
     <ProjectReference Include="..\OfficeAvenger.Web.Security\OfficeAvenger.Web.Security.csproj">
       <Project>{06ef0011-a04b-418f-848d-fe9fc1e89a2d}</Project>
@@ -238,6 +276,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\_Messages.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

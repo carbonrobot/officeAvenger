@@ -14,7 +14,7 @@ namespace OfficeAvenger.Web.Security
             if (string.Equals(username, "comic", StringComparison.InvariantCulture)
                 && string.Equals(password, "superstar", StringComparison.InvariantCulture))
             {
-                return new AuthenticationResult(new Agent() { Name = "Agent 87", Username = username });
+                return new AuthenticationResult(new Agent() { Id = 1, Name = "Agent 87", Username = username });
             }
             else
             {
