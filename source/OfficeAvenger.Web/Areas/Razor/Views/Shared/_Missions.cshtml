@@ -1,8 +1,27 @@
-﻿<div class="row">
+﻿@model IList<OfficeAvenger.Domain.Mission>
+<div class="row">
     <div class="large-12 columns">
         <h4>Missions</h4>
-        <ul class="no-bullet">
-            <li>Staple & Collate IPO Documents</li>
-        </ul>
+        @foreach (var mission in Model)
+        {
+            <div class="mission">
+                <div class="clearfix">
+                    <div class="mission-name">@mission.Name</div>
+                    <div class="mission-duration">@mission.Duration mins</div>
+                    <div class="mission-start">@DisplayTime(mission.MissionStart, "Not Started")</div>
+                    <div class="mission-end">@DisplayTime(mission.MissionEnd)</div>
+                </div>
+                <div class="mission-team clearfix">
+                    @foreach (var hero in mission.Team)
+                    {
+                    <img src="@hero.Avatar" class="left avatar" />
+                    }
+                </div>
+            </div>
+        }
+        <a class="button" href="/razor/mission/add">New Mission</a>
     </div>
 </div>
+@helper DisplayTime(DateTime? nullableDateTime, string nullString = ""){
+    @(nullableDateTime.HasValue ? nullableDateTime.Value.ToString() : nullString)
+}

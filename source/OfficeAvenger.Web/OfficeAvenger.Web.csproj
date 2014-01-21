@@ -152,9 +152,11 @@
     <Compile Include="App_Start\LoggingConfig.cs" />
     <Compile Include="App_Start\DependencyResolver.cs" />
     <Compile Include="App_Start\SecurityConfig.cs" />
+    <Compile Include="Areas\Razor\Controllers\MissionController.cs" />
     <Compile Include="Areas\Razor\Controllers\HomeController.cs" />
     <Compile Include="Areas\Razor\Controllers\TeamController.cs" />
     <Compile Include="Areas\Razor\Controllers\UnderworldController.cs" />
+    <Compile Include="Areas\Razor\Models\EditMissionViewModel.cs" />
     <Compile Include="Areas\Razor\Models\EditTeamViewModel.cs" />
     <Compile Include="Areas\Razor\Models\HomeViewModel.cs" />
     <Compile Include="Areas\Razor\RazorAreaRegistration.cs" />
@@ -284,6 +286,7 @@
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Areas\Razor\Views\Mission\Edit.cshtml" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>

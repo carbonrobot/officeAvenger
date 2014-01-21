@@ -17,14 +17,26 @@ namespace OfficeAvenger.Web.Areas.Razor.Controllers
             var model = new HomeViewModel();
             if (User.Identity.IsAuthenticated)
             {
-                var response = this.DataService.GetAvengers(Shield.ActiveAgent.Id);
-                if (response.HasError)
+                // active avengers for this agent
+                var heroResponse = this.DataService.GetAvengers(Shield.ActiveAgent.Id);
+                if (heroResponse.HasError)
                 {
-                    return WithError(View(model), "Unable to access agent profile");
+                    return WithError(View(model), "Unable to access team member information");
                 }
                 else
                 {
-                    model.Avengers = response.Result;
+                    model.Avengers = heroResponse.Result;
+                }
+
+                // active missions for this agent
+                var missionResponse = this.DataService.GetActiveMissions(Shield.ActiveAgent.Id);
+                if (missionResponse.HasError)
+                {
+                    return WithError(View(model), "Unable to access mission portfolio");
+                }
+                else
+                {
+                    model.Missions = missionResponse.Result;
                 }
             }
             return View(model);

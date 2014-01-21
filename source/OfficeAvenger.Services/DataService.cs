@@ -26,7 +26,7 @@ namespace OfficeAvenger.Services
         {
             Func<IList<Mission>> func = () =>
             {
-                return this.Context.AsQueryable<Mission>().Where(x => x.AgentId == agentId && x.EndDateTime >= DateTime.UtcNow).ToList();
+                return this.Context.AsQueryable<Mission>().Where(x => x.AgentId == agentId && x.MissionEnd >= DateTime.UtcNow).ToList();
             };
             return this.Execute(func);
         }

@@ -9,17 +9,6 @@ namespace OfficeAvenger.Domain
         public Mission()
         {
             this.Team = new List<Avenger>();
-            this.CreatedOn = DateTime.UtcNow;
-        }
-
-        /// <summary>
-        /// Gets or sets the created on date time
-        /// </summary>
-        /// <value>The created on.</value>
-        public DateTime CreatedOn
-        {
-            get { return _createdOn; }
-            private set { _createdOn = value; }
         }
 
         /// <summary>
@@ -30,21 +19,33 @@ namespace OfficeAvenger.Domain
             get { return _duration; }
             set
             {
+                if (MissionStart.HasValue)
+                    return; // mission already started
+
                 if (value <= 0)
                     throw new ArgumentOutOfRangeException("Mission duration must be at least 1 minute");
 
                 _duration = value;
-                OnDurationPropertyChanged();
             }
         }
 
         /// <summary>
         /// Gets or sets the end date of this mission
         /// </summary>
-        public DateTime EndDateTime
+        public DateTime? MissionEnd
         {
-            get { return _endDateTime; }
-            set { _endDateTime = value; }
+            get { return _missionEnd; }
+            set { _missionEnd = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets the created on date time
+        /// </summary>
+        /// <value>The created on.</value>
+        public DateTime? MissionStart
+        {
+            get { return _missionStart; }
+            private set { _missionStart = value; }
         }
 
         /// <summary>
@@ -74,16 +75,17 @@ namespace OfficeAvenger.Domain
         public IList<Avenger> Team { get; protected set; }
 
         /// <summary>
-        /// Called when [duration property changed].
+        /// Begins the mission
         /// </summary>
-        private void OnDurationPropertyChanged()
+        public void Engage()
         {
-            _endDateTime = this.CreatedOn.AddMinutes(_duration);
+            this.MissionStart = DateTime.Now;
+            this.MissionEnd = this.MissionStart.Value.AddMinutes(this.Duration);
         }
 
-        private DateTime _createdOn;
         private int _duration;
-        private DateTime _endDateTime;
+        private DateTime? _missionEnd;
+        private DateTime? _missionStart;
         private string _name;
     }
 }

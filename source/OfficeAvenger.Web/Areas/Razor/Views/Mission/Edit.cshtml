@@ -1,11 +1,11 @@
-﻿@model OfficeAvenger.Web.Areas.Razor.Models.EditTeamViewModel
+﻿@model OfficeAvenger.Web.Areas.Razor.Models.EditMissionViewModel
 @{
     ViewBag.Title = Title();
 }
 
-<form action="/razor/team/edit" method="post">
-    @Html.HiddenFor(m => m.Avenger.Id)
-    @Html.HiddenFor(m => m.Avenger.AgentId)
+<form action="/razor/mission/edit" method="post">
+    @Html.HiddenFor(m => m.Mission.Id)
+    @Html.HiddenFor(m => m.Mission.AgentId)
     <div class="row">
     <div class="small-4 small-offset-4 column">
         
@@ -14,14 +14,14 @@
         <div class="panel">
             <div class="row">
                 <div class="small-12 column">
-                    <label>Name</label>
-                    @Html.TextBoxFor(m => m.Avenger.Name, new { placeholder = "Avenger Code Name", autofocus="autofocus" })
+                    <label>Mission Description</label>
+                    @Html.TextBoxFor(m => m.Mission.Name, new { placeholder = "Mission Description", autofocus="autofocus" })
                 </div>
             </div>
             <div class="row">
                 <div class="small-12 column">
-                    <label>Avatar</label>
-                    @Html.TextBoxFor(m => m.Avenger.Avatar, new { placeholder = "Avatar URL Path" })
+                    <label>Duration (mins)</label>
+                    @Html.TextBoxFor(m => m.Mission.Duration, new { placeholder = "Duration (mins)" })
                 </div>
             </div>
             <div class="row">
@@ -36,8 +36,8 @@
 </div>
 </form>
 @helper Title(){
-    @(Model.Avenger.Id > 0 ? "Edit Team" : "Add Team Member")
+    @(Model.Mission.Id > 0 ? "Edit Mission" : "Add Mission")
 }
 @helper Action(){
-    @(Model.Avenger.Id > 0 ? "Update" : "Create")
+    @(Model.Mission.Id > 0 ? "Update" : "Create")
 }

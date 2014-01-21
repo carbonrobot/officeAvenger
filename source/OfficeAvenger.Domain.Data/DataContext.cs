@@ -28,6 +28,11 @@ namespace OfficeAvenger.Domain.Data
         /// </summary>
         public DbSet<Avenger> Avengers { get; set; }
 
+        /// <summary>
+        /// Gets or sets the repository for missions
+        /// </summary>
+        public DbSet<Mission> Missions{get; set;}
+
         #region Helpers
 
         /// <summary>

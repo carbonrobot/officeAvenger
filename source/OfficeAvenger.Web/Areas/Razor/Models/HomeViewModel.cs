@@ -10,13 +10,16 @@ namespace OfficeAvenger.Web.Areas.Razor.Models
         public HomeViewModel()
         {
             this.Avengers = new List<Avenger>();
+            this.Missions = new List<Mission>();
         }
 
-        public HomeViewModel(IList<Avenger> avengers)
+        public HomeViewModel(IList<Avenger> avengers, IList<Mission> missions)
         {
             this.Avengers = avengers;
+            this.Missions = missions;
         }
 
         public IList<Avenger> Avengers { get; set; }
+        public IList<Mission> Missions { get; set; }
     }
 }

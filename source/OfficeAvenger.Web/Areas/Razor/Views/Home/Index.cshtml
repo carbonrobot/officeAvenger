@@ -3,8 +3,6 @@
     ViewBag.Title = "Razor";
 }
 
-@Html.Partial("_Header")
-
 @if (User.Identity.IsAuthenticated)
 {
     @Html.Partial("_Agent")
@@ -13,7 +11,7 @@
             @Html.Partial("_Messages")
         </div>
     </div>
-    @Html.Partial("_Missions")
+    @Html.Partial("_Missions", Model.Missions)
     @Html.Partial("_Avengers", Model.Avengers)
 }
 else

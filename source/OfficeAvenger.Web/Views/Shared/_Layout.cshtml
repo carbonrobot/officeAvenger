@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
 
-    <title>@(ViewBag.Title != null ? ViewBag.Title +  "- " : "")Office Avenger</title>
+    <title>@(ViewBag.Title != null ? ViewBag.Title + "- " : "")Office Avenger</title>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
     @Styles.Render("~/Content/foundation/css")
@@ -17,15 +17,17 @@
     <nav class="top-bar">
         <ul class="title-area">
             <li class="name">
-                <h1><img src="/content/images/logo.png" /><a href="/">Office Avenger</a></h1>
+                <h1>
+                    <img src="/content/images/logo.png" /><a href="/">Office Avenger</a></h1>
             </li>
         </ul>
-
         <section class="top-bar-section">
             <!-- Right Nav Section -->
             <ul class="right">
+                <li><a href="/razor">@ViewBag.Framework</a></li>
+                <li class="divider" />
                 <li class="has-dropdown">
-                    <a href="/">Frameworks</a>
+                    <a href="/">Change Framework</a>
                     <ul class="dropdown">
                         <li><a href="/Razor">No js (ASP.NET MVC)</a></li>
                         <li><a href="/Mixed">MVC + Knockout</a></li>
