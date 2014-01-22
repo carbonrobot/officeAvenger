@@ -5,14 +5,19 @@
 
 @if (User.Identity.IsAuthenticated)
 {
-    @Html.Partial("_Agent")
     <div class="row">
         <div class="columns small-12">
             @Html.Partial("_Messages")
         </div>
     </div>
-    @Html.Partial("_Missions", Model.Missions)
-    @Html.Partial("_Avengers", Model.Avengers)
+    <div class="row">
+        <div class="columns small-12 large-4">
+            @Html.Partial("_Avengers", Model.Avengers)
+        </div>
+        <div class="columns small-12 large-8">
+            @Html.Partial("_Missions", Model.Missions)
+        </div>
+    </div>
 }
 else
 {

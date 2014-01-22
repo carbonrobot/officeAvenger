@@ -2,4 +2,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Framework = "ASP.NET MVC Razor";
 }
+@if (User.Identity.IsAuthenticated)
+{
+    @Html.Partial("_Agent")
+}
 @RenderBody()

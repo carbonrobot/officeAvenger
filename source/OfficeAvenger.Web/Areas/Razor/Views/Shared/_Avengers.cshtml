@@ -1,18 +1,16 @@
 ﻿@model IList<OfficeAvenger.Domain.Avenger>
-<div class="row">
-    <div class="large-12 columns">
-        <h4>Avengers</h4>
-        @foreach (var hero in this.Model)
-        {
-            <div class="team-member clearfix">
-                <div class="left">
-                    <img src="@hero.Avatar" class="avatar" />
-                </div>
-                <div class="left team-member-name">
-                    <a href="/razor/team/@hero.Id/edit">@hero.Name</a>
-                </div>
-            </div>
-        }
-        <a class="button" href="/razor/team/add">New Team Member</a>
+
+<h4>Avengers</h4>
+@foreach (var hero in this.Model)
+{
+    <div class="team-member clearfix">
+        <div class="left">
+            <img src="@hero.Avatar" class="avatar" />
+        </div>
+        <div class="left team-member-name">
+            <a href="/razor/team/@hero.Id/edit">@hero.Name</a>
+        </div>
     </div>
-</div>
+}
+<a class="button" href="/razor/team/add">New Team Member</a>
+
