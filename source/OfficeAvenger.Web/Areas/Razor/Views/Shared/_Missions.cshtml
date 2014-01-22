@@ -12,7 +12,7 @@
                         <div class="mission-start">
                             @if (mission.MissionStart.HasValue)
                             {
-                                @mission.MissionStart.Value.ToString()
+                                @mission.MissionStart.Value.ToShortTimeString()
                             }
                             else
                             {
@@ -38,5 +38,5 @@
 </div>
 @helper DisplayTime(DateTime? nullableDateTime, string nullString = "")
 {
-    @(nullableDateTime.HasValue ? nullableDateTime.Value.ToString() : nullString)
+    @(nullableDateTime.HasValue ? nullableDateTime.Value.ToShortTimeString() : nullString)
 }
