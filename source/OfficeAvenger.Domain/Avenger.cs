@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace OfficeAvenger.Domain
 {
@@ -6,7 +7,15 @@ namespace OfficeAvenger.Domain
     /// An instance of the mighty Avengers team
     /// </summary>
     public class Avenger : AgentOwnedEntity
-    {   
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Avenger"/> class.
+        /// </summary>
+        public Avenger()
+        {
+            this.Missions = new List<Mission>();
+        }
+
         /// <summary>
         /// Gets or sets the path to the avatar
         /// </summary>
@@ -31,5 +40,10 @@ namespace OfficeAvenger.Domain
         }
 
         private string _name;
+
+        /// <summary>
+        /// Gets the missions.
+        /// </summary>
+        public IList<Mission> Missions { get; private set; }
     }
 }

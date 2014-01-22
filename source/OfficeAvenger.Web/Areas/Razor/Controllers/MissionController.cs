@@ -71,5 +71,15 @@ namespace OfficeAvenger.Web.Areas.Razor.Controllers
 
             return WithSuccess(action, "Avenger has been removed from this mission");
         }
+
+        [HttpPost]
+        public ActionResult Start(int missionId)
+        {
+            var response = this.DataService.BeginMission(missionId, Shield.ActiveAgent.Id);
+            if (response.HasError)
+                ShowError("Unable to begin mission!");
+
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

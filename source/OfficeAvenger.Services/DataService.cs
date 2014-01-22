@@ -38,6 +38,23 @@ namespace OfficeAvenger.Services
         }
 
         /// <summary>
+        /// Begins the mission and starts the mission timer
+        /// </summary>
+        /// <param name="missionId">The mission id</param>
+        /// <param name="agentId">The agent id</param>
+        /// <returns></returns>
+        public ServiceResponse BeginMission(int missionId, int agentId)
+        {
+            Action action = () =>
+            {
+                var mission = this.Context.AsQueryable<Mission>().Single(x => x.Id == missionId && x.AgentId == agentId);
+                mission.Engage();
+                this.Context.Save(mission);
+            };
+            return this.Execute(action);
+        }
+
+        /// <summary>
         /// Gets the active missions for this agent
         /// </summary>
         /// <param name="agentId">The agent identifier.</param>
@@ -46,7 +63,10 @@ namespace OfficeAvenger.Services
         {
             Func<IList<Mission>> func = () =>
             {
-                return this.Context.AsQueryable<Mission>().Where(x => x.AgentId == agentId).ToList();
+                return this.Context
+                    .AsQueryable<Mission>(m => m.Team)
+                    .Where(x => x.AgentId == agentId)
+                    .ToList();
             };
             return this.Execute(func);
         }
@@ -192,7 +212,18 @@ namespace OfficeAvenger.Services
         /// <param name="agentId">The agent identifier.</param>
         private void CheckSecurity<T>(T entity, int agentId) where T : AgentOwnedEntity
         {
-            var updateAllowed = this.Context.AsQueryable<T>().Any(x => x.Id == entity.Id && x.AgentId == agentId);
+            CheckSecurity<T>(entity.Id, agentId);
+        }
+
+        /// <summary>
+        /// Checks the security.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="entityId">The entity id</param>
+        /// <param name="agentId">The agent identifier.</param>
+        private void CheckSecurity<T>(int entityId, int agentId) where T : AgentOwnedEntity
+        {
+            var updateAllowed = this.Context.AsQueryable<T>().Any(x => x.Id == entityId && x.AgentId == agentId);
             if (!updateAllowed)
                 throw new ArgumentOutOfRangeException("agentId", "Unauthorized access detected.");
         }

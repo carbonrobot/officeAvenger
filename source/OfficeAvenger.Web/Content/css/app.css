@@ -22,3 +22,13 @@
 .team-member-name { margin-top: 15px; }
 
 .drop { margin-top: 15px; }
+.crush { margin-bottom: 15px; }
+.hugme { margin: 0; }
+
+.mission {  }
+.mission-name { float: left; font-size:1.2em; }
+.mission-duration, .mission-start, .mission-end { display:inline-block; width: 100px; }
+.mission-duration {  }
+.mission-start {  }
+.mission-end {  }
+.mission-team { margin-top: 5px; }
