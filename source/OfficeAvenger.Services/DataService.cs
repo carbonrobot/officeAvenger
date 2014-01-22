@@ -126,8 +126,8 @@ namespace OfficeAvenger.Services
         {
             Action action = () =>
             {
-                var mission = this.Context.AsQueryable<Mission>().Single(x => x.Id == missionId && x.AgentId == agentId);
-                var hero = this.Context.AsQueryable<Avenger>().Single(x => x.Id == avengerId && x.AgentId == agentId);
+                var mission = this.Context.AsQueryable<Mission>(m => m.Team).Single(x => x.Id == missionId && x.AgentId == agentId);
+                var hero = mission.Team.Single(x => x.Id == avengerId);
 
                 mission.Team.Remove(hero);
                 this.Context.Save(mission);
