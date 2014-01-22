@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Knockout";
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="row">
+        <div class="columns small-12">
+            <p>Some magic Knockout bindings are about to be here...wait for it!</p>
+        </div>
+    </div>
+}
+else
+{
+    @Html.Partial("_Login")
+}

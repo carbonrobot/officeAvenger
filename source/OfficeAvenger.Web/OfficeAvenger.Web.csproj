@@ -152,10 +152,12 @@
     <Compile Include="App_Start\LoggingConfig.cs" />
     <Compile Include="App_Start\DependencyResolver.cs" />
     <Compile Include="App_Start\SecurityConfig.cs" />
+    <Compile Include="Areas\Knockout\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Knockout\KnockoutAreaRegistration.cs" />
     <Compile Include="Areas\Razor\Controllers\MissionController.cs" />
     <Compile Include="Areas\Razor\Controllers\HomeController.cs" />
     <Compile Include="Areas\Razor\Controllers\TeamController.cs" />
-    <Compile Include="Areas\Razor\Controllers\UnderworldController.cs" />
+    <Compile Include="Controllers\UnderworldController.cs" />
     <Compile Include="Areas\Razor\Models\EditMissionViewModel.cs" />
     <Compile Include="Areas\Razor\Models\EditTeamViewModel.cs" />
     <Compile Include="Areas\Razor\Models\HomeViewModel.cs" />
@@ -209,6 +211,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Knockout\Models\" />
     <Folder Include="Extensions\" />
     <Folder Include="Models\" />
   </ItemGroup>
@@ -246,7 +249,7 @@
     <Content Include="Areas\Razor\Views\Shared\_Avengers.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Razor\Views\Shared\_Login.cshtml" />
+    <Content Include="Views\Shared\_Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OfficeAvenger.Domain.Data\OfficeAvenger.Domain.Data.csproj">
@@ -288,6 +291,11 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Areas\Razor\Views\Mission\Edit.cshtml" />
+    <Content Include="Areas\Knockout\Views\Web.config" />
+    <Content Include="Areas\Knockout\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Knockout\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Knockout\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Knockout\Views\Shared\_Agent.cshtml" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>

@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using Ninject;
 using OfficeAvenger.Services;
 
-namespace OfficeAvenger.Web.Areas.Razor.Controllers
+namespace OfficeAvenger.Web.Controllers
 {
     public class UnderworldController : Controller
     {

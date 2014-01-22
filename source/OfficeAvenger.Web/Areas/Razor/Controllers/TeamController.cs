@@ -7,6 +7,7 @@ using OfficeAvenger.Domain;
 using OfficeAvenger.Web.Areas.Razor.Models;
 using OfficeAvenger.Web.Security;
 using OfficeAvenger.Services.Logging;
+using OfficeAvenger.Web.Controllers;
 
 namespace OfficeAvenger.Web.Areas.Razor.Controllers
 {

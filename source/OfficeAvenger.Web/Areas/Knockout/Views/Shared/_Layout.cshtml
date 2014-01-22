@@ -1,0 +1,12 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Framework = "ASP.NET MVC + Knockout";
+}
+@if (User.Identity.IsAuthenticated)
+{
+    @Html.Partial("_Agent")
+}
+@RenderBody()
+@section scripts{
+    <script type="text/javascript" src="/scripts/knockout-3.0.0.js"></script>
+}

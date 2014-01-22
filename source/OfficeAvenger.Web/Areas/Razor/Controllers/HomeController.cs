@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using OfficeAvenger.Web.Areas.Razor.Models;
+using OfficeAvenger.Web.Controllers;
 using OfficeAvenger.Web.Security;
 
 namespace OfficeAvenger.Web.Areas.Razor.Controllers
@@ -57,7 +58,7 @@ namespace OfficeAvenger.Web.Areas.Razor.Controllers
         public ActionResult Logout()
         {
             OfficeAvenger.Web.Security.Shield.Signout();
-            return new RedirectResult("/Razor");
+            return RedirectToAction("Index");
         }
 
     }
