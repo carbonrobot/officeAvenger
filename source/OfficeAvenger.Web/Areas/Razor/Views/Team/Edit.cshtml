@@ -4,24 +4,24 @@
 }
 
 <form action="/razor/team/edit" method="post">
-    @Html.HiddenFor(m => m.Avenger.Id)
-    @Html.HiddenFor(m => m.Avenger.AgentId)
-    <div class="row">
-    <div class="small-4 small-offset-4 column">
-        
+@Html.HiddenFor(m => m.Avenger.Id)
+@Html.HiddenFor(m => m.Avenger.AgentId)
+<div class="row">
+    <div class="column small-12 large-8 small-centered">
+
         <h4>@Title()</h4>
         @Html.Partial("_Messages")
         <div class="panel">
             <div class="row">
                 <div class="small-12 column">
                     <label>Name</label>
-                    @Html.TextBoxFor(m => m.Avenger.Name, new { placeholder = "Avenger Code Name", autofocus="autofocus" })
+                    @Html.TextBoxFor(m => m.Avenger.Name, new { placeholder = "Avenger Code Name", autofocus = "autofocus" })
                 </div>
             </div>
             <div class="row">
                 <div class="small-12 column">
                     <label>Avatar</label>
-                    @Html.TextBoxFor(m => m.Avenger.Avatar, new { placeholder = "Avatar URL Path" })
+                    @Html.TextBoxFor(m => m.Avenger.Avatar, new { placeholder = "Avatar URL or Data URI" })
                 </div>
             </div>
             <div class="row">
@@ -35,9 +35,11 @@
     </div>
 </div>
 </form>
-@helper Title(){
+@helper Title()
+{
     @(Model.Avenger.Id > 0 ? "Edit Team" : "Add Team Member")
 }
-@helper Action(){
+@helper Action()
+{
     @(Model.Avenger.Id > 0 ? "Update" : "Create")
 }

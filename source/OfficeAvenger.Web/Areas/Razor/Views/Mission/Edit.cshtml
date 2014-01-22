@@ -5,7 +5,7 @@
 
 
 <div class="row">
-    <div class="small-4 small-offset-4 column">
+    <div class="column small-12 large-8 small-centered">
 
         <h4>@Title()</h4>
         @Html.Partial("_Messages")
@@ -14,19 +14,19 @@
             @Html.HiddenFor(m => m.Mission.Id)
             @Html.HiddenFor(m => m.Mission.AgentId)
             <div class="row">
-                <div class="small-12 column">
+                <div class="column small-12">
                     <label>Mission Description</label>
                     @Html.TextBoxFor(m => m.Mission.Name, new { placeholder = "Mission Description", autofocus = "autofocus" })
                 </div>
             </div>
             <div class="row">
-                <div class="small-12 column">
+                <div class="column small-12 large-4">
                     <label>Duration (mins)</label>
                     @Html.TextBoxFor(m => m.Mission.Duration, new { placeholder = "Duration (mins)" })
                 </div>
             </div>
             <div class="row">
-                <div class="small-12 column">
+                <div class="column small-12">
                     <input type="submit" class="small button right" value="@Action()" />
                 </div>
             </div>
