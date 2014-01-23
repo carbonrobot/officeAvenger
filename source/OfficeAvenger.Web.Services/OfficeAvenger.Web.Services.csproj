@@ -338,6 +338,10 @@
       <Project>{bf3e0c1a-4f57-4b11-851b-207438b798d8}</Project>
       <Name>OfficeAvenger.Web.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\OfficeAvenger.Web.Security.FakeData\OfficeAvenger.Web.Security.FakeData.csproj">
+      <Project>{8968f8c4-2b68-493f-93b5-ea2f36aefc17}</Project>
+      <Name>OfficeAvenger.Web.Security.FakeData</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OfficeAvenger.Web.Security\OfficeAvenger.Web.Security.csproj">
       <Project>{06ef0011-a04b-418f-848d-fe9fc1e89a2d}</Project>
       <Name>OfficeAvenger.Web.Security</Name>

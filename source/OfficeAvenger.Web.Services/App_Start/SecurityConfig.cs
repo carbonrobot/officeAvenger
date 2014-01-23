@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
+using OfficeAvenger.Web.Security;
+using OfficeAvenger.Web.Security.Handlers;
 
 namespace OfficeAvenger.Web.Services
 {
@@ -9,7 +12,9 @@ namespace OfficeAvenger.Web.Services
     {
         public static void Register()
         {
-            OfficeAvenger.Web.Security.Shield.ConfigureWith(new OfficeAvenger.Web.Security.LazySecurityMatrix());
+            var matrix = new LazySecurityMatrix();
+            Shield.Register(new FormsAuthentication(matrix));
+            Shield.Register(new TokenAuthentication(matrix));
         }
     }
 }

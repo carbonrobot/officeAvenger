@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{06EF0011-A04B-418F-848D-FE9FC1E89A2D}</ProjectGuid>
+    <ProjectGuid>{8968F8C4-2B68-493F-93B5-EA2F36AEFC17}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OfficeAvenger.Web.Security</RootNamespace>
-    <AssemblyName>OfficeAvenger.Web.Security</AssemblyName>
+    <RootNamespace>OfficeAvenger.Web.Security.FakeData</RootNamespace>
+    <AssemblyName>OfficeAvenger.Web.Security.FakeData</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,12 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,26 +39,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AuthenticationResult.cs" />
-    <Compile Include="Authority\ClaimsIdentity.cs" />
-    <Compile Include="Authority\ClaimsPrincipal.cs" />
-    <Compile Include="Handlers\FormsAuthentication.cs" />
-    <Compile Include="Handlers\TokenAuthentication.cs" />
-    <Compile Include="IAuthentication.cs" />
-    <Compile Include="ISecurityMatrix.cs" />
+    <Compile Include="LazySecurityMatrix.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Shield.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OfficeAvenger.Domain\OfficeAvenger.Domain.csproj">
       <Project>{123a90c4-9117-4b3f-b60f-085677b694a4}</Project>
       <Name>OfficeAvenger.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\OfficeAvenger.Services.Logging\OfficeAvenger.Services.Logging.csproj">
+      <Project>{83ba81e1-b8b5-4b6e-a831-fcb02a4d9c01}</Project>
+      <Name>OfficeAvenger.Services.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OfficeAvenger.Web.Security\OfficeAvenger.Web.Security.csproj">
+      <Project>{06ef0011-a04b-418f-848d-fe9fc1e89a2d}</Project>
+      <Name>OfficeAvenger.Web.Security</Name>
+    </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

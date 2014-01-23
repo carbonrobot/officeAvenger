@@ -5,7 +5,7 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OfficeAvenger.Web.Security
+namespace OfficeAvenger.Web.Security.Authority
 {
     public class ClaimsPrincipal : IPrincipal
     {

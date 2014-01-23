@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using OfficeAvenger.Domain;
 
-namespace OfficeAvenger.Web.Security
+namespace OfficeAvenger.Web.Security.Authority
 {
     public class ClaimsIdentity : IIdentity
     {

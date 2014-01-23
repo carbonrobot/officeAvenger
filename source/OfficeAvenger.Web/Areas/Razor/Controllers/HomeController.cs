@@ -46,7 +46,7 @@ namespace OfficeAvenger.Web.Areas.Razor.Controllers
         [HttpPost]
         public ActionResult Login(string username, string password)
         {
-            var authenticated = Shield.Authenticate(username, password, true);
+            var authenticated = OfficeAvenger.Web.Security.Handlers.FormsAuthentication.Authenticate(username, password, true);
             if (!authenticated)
             {
                 return WithError(this.RedirectToAction("Index"), "Incorrect. Do not fail again.");
@@ -57,7 +57,7 @@ namespace OfficeAvenger.Web.Areas.Razor.Controllers
         [HttpGet]
         public ActionResult Logout()
         {
-            OfficeAvenger.Web.Security.Shield.Signout();
+            OfficeAvenger.Web.Security.Handlers.FormsAuthentication.Signout();
             return RedirectToAction("Index");
         }
 
