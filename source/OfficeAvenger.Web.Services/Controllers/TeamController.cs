@@ -6,17 +6,16 @@ using System.Net.Http;
 using System.Web.Http;
 using Ninject;
 using OfficeAvenger.Domain;
-using OfficeAvenger.Services;
 using OfficeAvenger.Web.Security;
 
 namespace OfficeAvenger.Web.Services.Controllers
 {
-    public class TeamController : ApiController
+    public class TeamController : UnderworldController
     {
-        
+        [Authorize]
         public IEnumerable<Avenger> Get()
         {
-            var response = this.DataService.GetAvengers(1);
+            var response = this.DataService.GetAvengers(Shield.ActiveAgent.Id);
             if (response.HasError)
             {
                 throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.InternalServerError)
@@ -27,8 +26,5 @@ namespace OfficeAvenger.Web.Services.Controllers
 
             return response.Result;
         }
-
-        [Inject]
-        public DataService DataService { get; set; }
     }
 }

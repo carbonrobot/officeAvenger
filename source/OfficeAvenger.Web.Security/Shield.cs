@@ -12,27 +12,20 @@ namespace OfficeAvenger.Web.Security
     /// </summary>
     public static class Shield
     {
+        /// <summary>
+        /// Gets the current authorized agent
+        /// </summary>
         public static Agent ActiveAgent
         {
             get
             {
-                // TODO: add caching support
+                if (HttpContext.Current.User == null)
+                    return null;
+
                 if (!HttpContext.Current.User.Identity.IsAuthenticated)
                     return null;
 
-                var cookie = HttpContext.Current.Request.Cookies[FormsAuthentication.FormsCookieName];
-                if (cookie == null)
-                    return null;
-
-                var ticket = FormsAuthentication.Decrypt(cookie.Value);
-                if (ticket == null)
-                    return null;
-
-                var agent = JsonConvert.DeserializeObject<Agent>(ticket.UserData);
-                if (agent == null)
-                    return null;
-
-                return agent;
+                return ((ClaimsIdentity)HttpContext.Current.User.Identity).Agent;
             }
         }
 
@@ -83,14 +76,14 @@ namespace OfficeAvenger.Web.Security
             if (SecurityMatrix == null)
                 throw new InvalidOperationException("Security matrix must be configured by calling ConfigureWith() prior to use.");
 
-            var token = HttpContext.Current.Request.Headers["Authorization"];
-            var result = SecurityMatrix.AuthenticateToken(token);
-            if (result.Success)
-            {
-                var identity = new ClaimsIdentity(result.Agent.Username, "Token");
-                var principal = new ClaimsPrincipal(identity);
-                Thread.CurrentPrincipal = principal;
-            }
+            var agent = ResolveFormsAuthentication();
+            if (agent == null)
+                agent = ResolveTokenAuthentication();
+
+            var identity = new ClaimsIdentity(agent, "Token");
+            var principal = new ClaimsPrincipal(identity);
+            Thread.CurrentPrincipal = principal;
+            HttpContext.Current.User = principal;
         }
 
         /// <summary>
@@ -107,6 +100,46 @@ namespace OfficeAvenger.Web.Security
         public static void Signout()
         {
             FormsAuthentication.SignOut();
+        }
+
+        /// <summary>
+        /// Resolves the authenticated agent using forms authentication
+        /// </summary>
+        private static Agent ResolveFormsAuthentication()
+        {
+            if (HttpContext.Current.User != null)
+            {
+                if (HttpContext.Current.User.Identity.IsAuthenticated)
+                {
+                    // Resolve the agent from the forms authentication cookie
+                    // TODO: Should we really store it inside the cookie, is it safe??
+                    var cookie = HttpContext.Current.Request.Cookies[FormsAuthentication.FormsCookieName];
+                    if (cookie != null)
+                    {
+                        var ticket = FormsAuthentication.Decrypt(cookie.Value);
+                        if (ticket != null)
+                        {
+                            return JsonConvert.DeserializeObject<Agent>(ticket.UserData);
+                        }
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Resolves the authentication agent using basic auth tokens
+        /// </summary>
+        /// <returns></returns>
+        private static Agent ResolveTokenAuthentication()
+        {
+            var token = HttpContext.Current.Request.Headers["Authorization"];
+            var result = SecurityMatrix.AuthenticateToken(token);
+            if (result.Success)
+                return result.Agent;
+            else
+                return null;
         }
 
         private static ISecurityMatrix SecurityMatrix;

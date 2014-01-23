@@ -10,11 +10,18 @@ using System.Web.Routing;
 using OfficeAvenger.Services.Logging;
 using OfficeAvenger.Domain.Data;
 using OfficeAvenger.Services;
+using OfficeAvenger.Web.Security;
 
 namespace OfficeAvenger.Web
 {
     public class MvcApplication : System.Web.HttpApplication
     {
+        protected void Application_AuthenticateRequest()
+        {
+            this.Log().Info(() => "Authenticating authorization");
+            Shield.AuthenticateRequest();
+        }
+
         protected void Application_Start()
         {
             LoggingConfig.InitializeLogger();
