@@ -1,30 +1,28 @@
-[assembly: WebActivator.PreApplicationStartMethod(typeof(OfficeAvenger.Web.DependencyResolver), "Start")]
-[assembly: WebActivator.ApplicationShutdownMethodAttribute(typeof(OfficeAvenger.Web.DependencyResolver), "Stop")]
+[assembly: WebActivator.PreApplicationStartMethod(typeof(OfficeAvenger.Web.DependencyConfig), "Start")]
+[assembly: WebActivator.ApplicationShutdownMethodAttribute(typeof(OfficeAvenger.Web.DependencyConfig), "Stop")]
 
 namespace OfficeAvenger.Web
 {
     using System;
     using System.Web;
-
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
-
     using Ninject;
     using Ninject.Web.Common;
 
-    public static class DependencyResolver 
+    public static class DependencyConfig
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
 
         /// <summary>
         /// Starts the application
         /// </summary>
-        public static void Start() 
+        public static void Start()
         {
             DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
             DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
             bootstrapper.Initialize(CreateKernel);
         }
-        
+
         /// <summary>
         /// Stops the application.
         /// </summary>
@@ -32,7 +30,7 @@ namespace OfficeAvenger.Web
         {
             bootstrapper.ShutDown();
         }
-        
+
         /// <summary>
         /// Creates the kernel that will manage your application.
         /// </summary>
@@ -42,7 +40,7 @@ namespace OfficeAvenger.Web
             var kernel = new StandardKernel();
             kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
             kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
-            
+
             RegisterServices(kernel);
             return kernel;
         }

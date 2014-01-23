@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Web;
 using System.Web.Security;
 using Newtonsoft.Json;
@@ -18,7 +19,7 @@ namespace OfficeAvenger.Web.Security
                 // TODO: add caching support
                 if (!HttpContext.Current.User.Identity.IsAuthenticated)
                     return null;
-                
+
                 var cookie = HttpContext.Current.Request.Cookies[FormsAuthentication.FormsCookieName];
                 if (cookie == null)
                     return null;
@@ -70,6 +71,25 @@ namespace OfficeAvenger.Web.Security
             else
             {
                 return false;
+            }
+        }
+
+        /// <summary>
+        /// Authenticates the request using API tokens
+        /// </summary>
+        /// <exception cref="System.InvalidOperationException">Security matrix must be configured by calling ConfigureWith() prior to use.</exception>
+        public static void AuthenticateRequest()
+        {
+            if (SecurityMatrix == null)
+                throw new InvalidOperationException("Security matrix must be configured by calling ConfigureWith() prior to use.");
+
+            var token = HttpContext.Current.Request.Headers["Authorization"];
+            var result = SecurityMatrix.AuthenticateToken(token);
+            if (result.Success)
+            {
+                var identity = new ClaimsIdentity(result.Agent.Username, "Token");
+                var principal = new ClaimsPrincipal(identity);
+                Thread.CurrentPrincipal = principal;
             }
         }
 

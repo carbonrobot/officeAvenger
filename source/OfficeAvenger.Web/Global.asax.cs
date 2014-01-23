@@ -8,6 +8,8 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using OfficeAvenger.Services.Logging;
+using OfficeAvenger.Domain.Data;
+using OfficeAvenger.Services;
 
 namespace OfficeAvenger.Web
 {
@@ -25,13 +27,14 @@ namespace OfficeAvenger.Web
 
         protected void Application_BeginRequest()
         {
-            this.Log().Info(() => "Application startup");
+            this.Log().Info(() => "Begin Request");
             MiniProfiler.Start();
         }
 
         protected void Application_EndRequest()
         {
             MiniProfiler.Stop();
+            this.Log().Info(() => "End Request");
         }
     }
 }

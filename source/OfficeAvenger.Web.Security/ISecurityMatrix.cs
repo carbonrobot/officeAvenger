@@ -9,5 +9,6 @@ namespace OfficeAvenger.Web.Security
     public interface ISecurityMatrix
     {
         AuthenticationResult Authenticate(string username, string password);
+        AuthenticationResult AuthenticateToken(string token);
     }
 }
