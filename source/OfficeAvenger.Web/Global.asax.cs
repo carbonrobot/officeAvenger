@@ -1,5 +1,4 @@
-﻿using StackExchange.Profiling;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +7,8 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using OfficeAvenger.Services.Logging;
-using OfficeAvenger.Domain.Data;
-using OfficeAvenger.Services;
 using OfficeAvenger.Web.Security;
+using StackExchange.Profiling;
 
 namespace OfficeAvenger.Web
 {
@@ -18,7 +16,7 @@ namespace OfficeAvenger.Web
     {
         protected void Application_AuthenticateRequest()
         {
-            this.Log().Info(() => "Authenticating authorization");
+            this.Log().Info(() => "Application_AuthenticateRequest");
             Shield.AuthenticateRequest();
         }
 
@@ -26,9 +24,11 @@ namespace OfficeAvenger.Web
         {
             LoggingConfig.InitializeLogger();
             AreaRegistration.RegisterAllAreas();
+            GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+			JsonConfig.Register();
             SecurityConfig.Register();
         }
 

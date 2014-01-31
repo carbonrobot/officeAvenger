@@ -12,6 +12,7 @@ namespace OfficeAvenger.Web.Areas.Razor.Controllers
 {
     public class HomeController : UnderworldController
     {
+
         [HttpGet]
         public ActionResult Index()
         {

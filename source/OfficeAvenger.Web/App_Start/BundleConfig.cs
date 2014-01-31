@@ -24,8 +24,7 @@ namespace OfficeAvenger.Web
             bundles.Add(new ScriptBundle("~/bundles/application").Include(
                         "~/Scripts/vendor/foundation/foundation.js",
                         "~/Scripts/vendor/foundation/foundation.topbar.js",
-                        "~/Scripts/vendor/foundation/foundation.alert.js",
-                        "~/Scripts/app.js"));
+                        "~/Scripts/vendor/foundation/foundation.alert.js"));
         }
     }
 }

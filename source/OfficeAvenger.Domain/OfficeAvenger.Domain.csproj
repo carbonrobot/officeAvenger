@@ -47,6 +47,12 @@
     <Compile Include="Mission.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OfficeAvenger.Services.Logging\OfficeAvenger.Services.Logging.csproj">
+      <Project>{83ba81e1-b8b5-4b6e-a831-fcb02a4d9c01}</Project>
+      <Name>OfficeAvenger.Services.Logging</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

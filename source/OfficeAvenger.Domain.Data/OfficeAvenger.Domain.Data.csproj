@@ -57,6 +57,10 @@
       <Project>{123a90c4-9117-4b3f-b60f-085677b694a4}</Project>
       <Name>OfficeAvenger.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\OfficeAvenger.Services.Logging\OfficeAvenger.Services.Logging.csproj">
+      <Project>{83ba81e1-b8b5-4b6e-a831-fcb02a4d9c01}</Project>
+      <Name>OfficeAvenger.Services.Logging</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OfficeAvenger.Services\OfficeAvenger.Services.csproj">
       <Project>{9702a96a-403d-42d5-87f6-3c7869d2b087}</Project>
       <Name>OfficeAvenger.Services</Name>
