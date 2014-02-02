@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Http;
 using Newtonsoft.Json;
 
-namespace OfficeAvenger.Web.Services
+namespace OfficeAvenger.Web
 {
     public static class JsonConfig
     {
