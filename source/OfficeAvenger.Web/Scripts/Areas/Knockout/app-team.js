@@ -4,7 +4,7 @@
         ko.mapping.fromJS(jsonObject, {}, this);
 
         var self = this;
-        
+        // no computed props yet
     };
 
     ns.TeamMapping = {

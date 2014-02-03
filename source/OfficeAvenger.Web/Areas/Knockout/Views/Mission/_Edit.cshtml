@@ -1,20 +1,20 @@
-﻿<div id="editTeamModal" class="reveal-modal large" data-bind="with: SelectedAvenger" data-reveal>
-    <form data-bind="submit: $parent.updateTeam">
+﻿<div id="editMissionModal" class="reveal-modal large" data-bind="with: SelectedMission" data-reveal>
+    <form data-bind="submit: $parent.updateMission">
     <input type="hidden" name="id" data-bind="value: Id" />
     <input type="hidden" name="agentId" value="@OfficeAvenger.Web.Security.Shield.ActiveAgent.Id" />
 
-    <h4>Update Team</h4>
+    <h4>Update Mission</h4>
     <div class="panel">
         <div class="row">
             <div class="small-12 column">
-                <label>Name</label>
-                <input type="text" name="name" placeholder="Avatar Code Name" autofocus="autofocus" data-bind="value: Name" />
+                <label for="name">Mission Description</label>
+                <input type="text" name="name" placeholder="Mission Description" autofocus="autofocus" data-bind="value: Name" />
             </div>
         </div>
         <div class="row">
-            <div class="small-12 column">
-                <label>Avatar</label>
-                <input type="text" name="avatar" placeholder="Avatar URL or Data URI" data-bind="value: Avatar" />
+            <div class="small-12 large-4 column">
+                <label for="avatar">Duration</label>
+                <input type="text" name="duration" placeholder="Duration (mins)" data-bind="value: Duration" />
             </div>
         </div>
         <div class="row">

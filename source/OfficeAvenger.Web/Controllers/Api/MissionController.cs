@@ -16,6 +16,11 @@
             return this.DataService.GetActiveMissions(Shield.ActiveAgent.Id).GoBabyGo();
         }
 
+        public Mission Post(Mission model)
+        {
+            return this.DataService.UpdateMission(model, Shield.ActiveAgent.Id).GoBabyGo();
+        }
+
         [HttpPost]
         public Mission Start(int id)
         {

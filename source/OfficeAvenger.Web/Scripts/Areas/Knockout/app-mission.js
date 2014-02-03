@@ -1,27 +1,10 @@
 ﻿(function (ns) {
 
-    var baseAddress = '/api';
-    var editMissionUrl = baseAddress + '/mission/';
-    var startMissionUrl = baseAddress + '/mission/start';
-    
     ns.Mission = function(jsonObject) {
         ko.mapping.fromJS(jsonObject, {}, this);
 
-        // props
         var self = this;
-        self.editMissionUri = ko.computed(function () {
-            return editMissionUrl + self.Id();
-        });
-
-        // methods
-        self.startMission = function (form) {
-            var id = $('[name=id]', form).val();
-            $.post(startMissionUrl + '/' + id)
-                .done(function (data) {
-                    ko.mapping.fromJS(data, {}, self);
-                });
-            event.preventDefault();
-        };
+        // no computed props yet
     };
 
     ns.MissionMapping = {
@@ -32,5 +15,7 @@
             return new ns.Mission(opt.data);
         }
     };
+
+    ns.EmptyMission = { Id: "", Name: "", Duration: "" };
     
 })(window.Avenger = window.Avenger || {});
