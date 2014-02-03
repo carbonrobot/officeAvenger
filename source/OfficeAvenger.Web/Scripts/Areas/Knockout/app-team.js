@@ -15,5 +15,7 @@
             return new ns.Team(opt.data);
         }
     };
+
+    ns.EmptyAvenger = { Id: "", Name: "", Avatar: "" };
     
 })(window.Avenger = window.Avenger || {});

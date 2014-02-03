@@ -12,16 +12,12 @@
     {
         public IEnumerable<Avenger> Get()
         {
-            var response = this.DataService.GetAvengers(Shield.ActiveAgent.Id);
-            if (response.HasError)
-            {
-                throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.InternalServerError)
-                {
-                    Content = new StringContent(response.Exception.ToString())
-                });
-            }
+            return this.DataService.GetAvengers(Shield.ActiveAgent.Id).GoBabyGo();
+        }
 
-            return response.Result;
+        public Avenger Post(Avenger model)
+        {
+            return this.DataService.UpdateAvenger(model, Shield.ActiveAgent.Id).GoBabyGo();
         }
     }
 }

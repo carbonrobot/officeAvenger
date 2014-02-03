@@ -266,6 +266,7 @@
     <Content Include="Views\Shared\_Messages.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="NLog.config" />
+    <Content Include="Areas\Knockout\Views\Team\_Edit.cshtml" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>

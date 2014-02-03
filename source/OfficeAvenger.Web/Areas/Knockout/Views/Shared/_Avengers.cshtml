@@ -3,14 +3,13 @@
 <div class="loading-img"></div>
 <!-- /ko -->
 <!-- ko foreach: Team -->
-    <div class="team-member clearfix" style="display: none;" data-bind="visible: true">
-        <div class="left">
-            <img data-bind="attr: { src: Avatar }" class="avatar" />
-        </div>
-        <div class="left team-member-name">
-            <a data-bind="attr: { href: Id }, text: Name"></a>
-        </div>
+<div class="team-member clearfix" style="display: none;" data-bind="visible: true">
+    <div class="left">
+        <img data-bind="attr: { src: Avatar }" class="avatar" />
     </div>
+    <div class="left team-member-name">
+        <a href="#" data-bind="text: Name, click: $parent.editTeam"></a>
+    </div>
+</div>
 <!-- /ko -->
-<a class="button" href="/razor/team/add">New Team Member</a>
-
+<a class="button" href="#" data-bind="click: addTeam">New Team Member</a>
