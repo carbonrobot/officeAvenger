@@ -53,7 +53,7 @@
 
         // missions
         self.addMission = function () {
-            self.editMission(ns.EmptyAvenger);
+            self.editMission(ns.EmptyMission);
         };
         self.editMission = function (avenger) {
             self.SelectedMission(avenger);
