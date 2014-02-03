@@ -17,7 +17,7 @@
 
             $.getJSON(getTeamUrl)
                  .done(function (data) {
-                     self.Team(data);
+                     ko.mapping.fromJS(data, ns.TeamMapping, self.Team);
                      self.loading.pop();
                  });
         };

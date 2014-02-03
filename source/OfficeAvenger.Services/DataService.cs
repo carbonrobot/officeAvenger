@@ -47,7 +47,7 @@ namespace OfficeAvenger.Services
         {
             Func<Mission> func = () =>
             {
-                var mission = this.Context.AsQueryable<Mission>().Single(x => x.Id == missionId && x.AgentId == agentId);
+                var mission = this.Context.AsQueryable<Mission>(m => m.Team).Single(x => x.Id == missionId && x.AgentId == agentId);
                 mission.Engage();
                 return this.Context.Save(mission);
             };

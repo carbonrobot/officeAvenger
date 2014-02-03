@@ -18,7 +18,7 @@
             var id = $('[name=id]', form).val();
             $.post(startMissionUrl + '/' + id)
                 .done(function (data) {
-                    ko.mapping.fromJS(data, {}, this);
+                    ko.mapping.fromJS(data, {}, self);
                 });
             event.preventDefault();
         };
