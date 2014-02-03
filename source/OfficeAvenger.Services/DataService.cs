@@ -43,15 +43,15 @@ namespace OfficeAvenger.Services
         /// <param name="missionId">The mission id</param>
         /// <param name="agentId">The agent id</param>
         /// <returns></returns>
-        public ServiceResponse BeginMission(int missionId, int agentId)
+        public ServiceResponse<Mission> BeginMission(int missionId, int agentId)
         {
-            Action action = () =>
+            Func<Mission> func = () =>
             {
                 var mission = this.Context.AsQueryable<Mission>().Single(x => x.Id == missionId && x.AgentId == agentId);
                 mission.Engage();
-                this.Context.Save(mission);
+                return this.Context.Save(mission);
             };
-            return this.Execute(action);
+            return this.Execute(func);
         }
 
         /// <summary>

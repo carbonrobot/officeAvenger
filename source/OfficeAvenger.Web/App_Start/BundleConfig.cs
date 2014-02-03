@@ -25,6 +25,15 @@ namespace OfficeAvenger.Web
                         "~/Scripts/vendor/foundation/foundation.js",
                         "~/Scripts/vendor/foundation/foundation.topbar.js",
                         "~/Scripts/vendor/foundation/foundation.alert.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/knockout").Include(
+                        "~/Scripts/vendor/knockout-3.0.0.js",
+                        "~/Scripts/vendor/knockout.mapping.js",
+                        "~/Scripts/areas/knockout/app.js",
+                        "~/Scripts/areas/knockout/app-team.js",
+                        "~/Scripts/areas/knockout/app-mission.js",
+                        "~/Scripts/areas/knockout/app-viewmodel.js"
+                        ));
         }
     }
 }

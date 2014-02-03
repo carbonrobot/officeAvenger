@@ -13,13 +13,6 @@ namespace OfficeAvenger.Services
         /// <summary>
         /// Returns a queryable interface for an entity
         /// </summary>
-        /// <typeparam name="T">The entity type</typeparam>
-        /// <returns><see cref="IQueryable"/></returns>
-        IQueryable<T> AsQueryable<T>(params string[] includes) where T : Entity;
-
-        /// <summary>
-        /// Returns a queryable interface for an entity
-        /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="includeProperties"></param>
         /// <returns></returns>
@@ -48,15 +41,7 @@ namespace OfficeAvenger.Services
         /// <typeparam name="T">The entity type</typeparam>
         /// <param name="id">The entity key</param>
         /// <returns><see cref="Entity"/></returns>
-        T Find<T>(int id, params string[] includes) where T : Entity;
-
-        /// <summary>
-        /// Returns a single entity. Throws an exception if none or more than one found.
-        /// </summary>
-        /// <typeparam name="T">The entity type</typeparam>
-        /// <param name="id">The entity key</param>
-        /// <returns><see cref="Entity"/></returns>
-        T Get<T>(int id, params string[] includes) where T : Entity;
+        T Find<T>(int id, params Expression<Func<T, object>>[] includeProperties) where T : Entity;
 
         /// <summary>
         /// Returns a single entity. Throws an exception if none or more than one found.

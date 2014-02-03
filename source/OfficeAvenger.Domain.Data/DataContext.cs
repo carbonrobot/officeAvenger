@@ -40,22 +40,6 @@ namespace OfficeAvenger.Domain.Data
         /// </summary>
         /// <typeparam name="T">The entity type</typeparam>
         /// <returns><see cref="IQueryable"/></returns>
-        public IQueryable<T> AsQueryable<T>(params string[] includes) where T : Entity
-        {
-            var query = this.Set<T>().AsQueryable();
-            if (includes != null)
-            {
-                foreach (var include in includes)
-                    query = query.Include(include);
-            }
-            return query;
-        }
-
-        /// <summary>
-        /// Returns a queryable interface for an entity
-        /// </summary>
-        /// <typeparam name="T">The entity type</typeparam>
-        /// <returns><see cref="IQueryable"/></returns>
         public IQueryable<T> AsQueryable<T>(params Expression<Func<T, object>>[] includeProperties) where T : Entity
         {
             var query = this.Set<T>().AsQueryable();
@@ -105,7 +89,7 @@ namespace OfficeAvenger.Domain.Data
         /// <param name="id">The entity key</param>
         /// <param name="includes"></param>
         /// <returns><see cref="Entity"/></returns>
-        public T Find<T>(int id, params string[] includes) where T : Entity
+        public T Find<T>(int id, params Expression<Func<T, object>>[] includes) where T : Entity
         {
             if (includes == null)
                 return this.Set<T>().Find(id);
@@ -119,28 +103,13 @@ namespace OfficeAvenger.Domain.Data
         /// <typeparam name="T">The entity type</typeparam>
         /// <param name="id">The entity key</param>
         /// <param name="includes"></param>
-        /// <returns><see cref="Entity"/></returns>
-        public T Get<T>(int id, params string[] includes) where T : Entity
+        /// <returns></returns>
+        public T Get<T>(int id, params Expression<Func<T, object>>[] includes) where T : Entity
         {
             if (includes == null)
                 return this.Set<T>().Find(id);
             else
                 return this.AsQueryable<T>(includes).Single(x => x.Id == id);
-        }
-
-        /// <summary>
-        /// Returns a single entity. Throws an exception if none or more than one found.
-        /// </summary>
-        /// <typeparam name="T">The entity type</typeparam>
-        /// <param name="id">The entity key</param>
-        /// <param name="includeProperties"></param>
-        /// <returns></returns>
-        public T Get<T>(int id, params Expression<Func<T, object>>[] includeProperties) where T : Entity
-        {
-            if (includeProperties == null)
-                return this.Set<T>().Find(id);
-            else
-                return this.AsQueryable<T>(includeProperties).Single(x => x.Id == id);
         }
 
         /// <summary>
@@ -163,7 +132,7 @@ namespace OfficeAvenger.Domain.Data
         /// <summary>
         /// Filters the results based on a predicate
         /// </summary>
-        public IList<T> Where<T>(Func<T, bool> predicate, params string[] includes) where T : Entity
+        public IList<T> Where<T>(Func<T, bool> predicate, params Expression<Func<T, object>>[] includes) where T : Entity
         {
             return this.AsQueryable<T>(includes).Where(predicate).ToList();
         }

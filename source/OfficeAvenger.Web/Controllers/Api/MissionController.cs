@@ -6,22 +6,21 @@
     using System.Net.Http;
     using Domain;
     using Security;
+    using Services;
 
     [Authorize]
     public class MissionController : DataApiController
     {
         public IEnumerable<Mission> Get()
         {
-            var response = this.DataService.GetActiveMissions(Shield.ActiveAgent.Id);
-            if (response.HasError)
-            {
-                throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.InternalServerError)
-                {
-                    Content = new StringContent(response.Exception.ToString())
-                });
-            }
+            return this.DataService.GetActiveMissions(Shield.ActiveAgent.Id).GoBabyGo();
+        }
 
-            return response.Result;
+        [HttpPost]
+        public Mission Start(int id)
+        {
+            return this.DataService.BeginMission(id, Shield.ActiveAgent.Id).GoBabyGo();
         }
     }
+
 }

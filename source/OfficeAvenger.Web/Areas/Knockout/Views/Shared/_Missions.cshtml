@@ -3,19 +3,21 @@
 <div class="loading-img"></div>
 <!-- /ko -->
 <!-- ko foreach: Missions -->
-<div class="mission crush" style="display:none;" data-bind="visible: true">
+<div class="mission crush" style="display: none;" data-bind="visible: true">
     <div class="clearfix">
-        <div class="mission-name"><a data-bind="attr: { href: Id }, text: Name"></a></div>
+        <div class="mission-name"><a data-bind="attr: { href: editMissionUri }, text: Name"></a></div>
         <div class="right">
-            <div class="mission-duration" data-bind="text: Duration"></div>
+            <div class="mission-duration" data-bind="debug: $data, text: Duration"></div>
             <div class="mission-start">
-                <!-- ko with: MissionStart -->
-                <form action="/razor/mission/start" method="post" class="inline hugme">
-                    <input type="hidden" name="missionId" data-bind="value: Id"/>
+                <!-- ko ifnot: missionStarted -->
+                <form data-bind="submit: startMission" class="inline hugme">
+                    <input type="hidden" name="id" data-bind="value: Id" />
                     <a href="#" onclick="$(this).closest('form').submit();" class="button tiny hugme">Begin</a>
                 </form>
                 <!-- /ko -->
-                <!-- ko ifnot: MissionStart == '' ? '' : MissionStart--><!-- /ko -->
+                <!-- ko if: missionStarted -->
+                <!-- ko text:MissionStart --><!-- /ko -->
+                <!-- /ko -->
             </div>
             <div class="mission-end" data-bind="text: MissionEnd"></div>
         </div>
