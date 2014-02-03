@@ -55,6 +55,24 @@ namespace OfficeAvenger.Services
         }
 
         /// <summary>
+        /// Gets the mission.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="agentId">The agent identifier.</param>
+        public ServiceResponse DeleteMission(int id, int agentId)
+        {
+            Action func = () =>
+            {
+                var entity = this.Context
+                    .AsQueryable<Mission>()
+                    .Single(x => x.Id == id && x.AgentId == agentId);
+
+                this.Context.Delete(entity);
+            };
+            return this.Execute(func);
+        }
+
+        /// <summary>
         /// Gets the active missions for this agent
         /// </summary>
         /// <param name="agentId">The agent identifier.</param>

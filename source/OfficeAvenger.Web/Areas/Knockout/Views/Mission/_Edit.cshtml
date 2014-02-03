@@ -25,5 +25,39 @@
     </div>
 
     </form>
+    
+    <!-- ko if: Id -->
+    <h5>Selected Team</h5>
+
+    <!-- ko if: Team().length -->
+    <div class="clearfix">
+        <!-- ko foreach: Team -->
+        <form class="inline" data-bind="submit: $root.removeHero">
+            <input type="hidden" name="missionId" data-bind="value: $parent.Id" />
+            <input type="hidden" name="avengerId" data-bind="value: Id" />
+            <img class="avatar clickable" data-bind="attr: { src: Avatar }" onclick="$(this).closest('form').submit();" />
+        </form>
+        <!-- /ko -->
+    </div>
+    <!-- /ko -->
+    <!-- ko ifnot: Team().length -->
+    <div class="alert-box">
+        Choose your team members for this mission.
+    </div>
+    <!-- /ko -->
+
+    <h5>On Standby</h5>
+    <div class="clearfix">
+        <!-- ko foreach: $parent.StandbyTeam -->
+        <form class="inline" data-bind="submit: $root.addHero">
+            <input type="hidden" name="missionId" data-bind="value: $root.SelectedMission().Id" />
+            <input type="hidden" name="avengerId" data-bind="value: Id" />
+            <img class="avatar clickable" data-bind="attr: { src: Avatar }" onclick="$(this).closest('form').submit();" />
+        </form>
+        <!-- /ko -->
+    </div>
+
+    <!-- /ko -->
+
     <a class="close-reveal-modal">&#215;</a>
 </div>

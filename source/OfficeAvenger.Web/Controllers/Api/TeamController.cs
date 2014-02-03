@@ -10,11 +10,15 @@
     [Authorize]
     public class TeamController : DataApiController
     {
+        // api/team
+        [HttpGet]
         public IEnumerable<Avenger> Get()
         {
             return this.DataService.GetAvengers(Shield.ActiveAgent.Id).GoBabyGo();
         }
 
+        // api/team
+        [HttpPost]
         public Avenger Post(Avenger model)
         {
             return this.DataService.UpdateAvenger(model, Shield.ActiveAgent.Id).GoBabyGo();

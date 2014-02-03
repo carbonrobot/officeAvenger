@@ -13,7 +13,8 @@
         },
         create: function (opt) {
             return new ns.Mission(opt.data);
-        }
+        },
+        "Team": ns.TeamMapping
     };
 
     ns.EmptyMission = { Id: "", Name: "", Duration: "" };
