@@ -7,15 +7,13 @@
     ns.Mission = function(jsonObject) {
         ko.mapping.fromJS(jsonObject, {}, this);
 
+        // props
         var self = this;
-        self.missionStarted = ko.computed(function() {
-            return self.MissionStart() != null;
-        });
         self.editMissionUri = ko.computed(function () {
-            //return editMissionUrl + self.Id;
-            return 1;
+            return editMissionUrl + self.Id();
         });
 
+        // methods
         self.startMission = function (form) {
             var id = $('[name=id]', form).val();
             $.post(startMissionUrl + '/' + id)
@@ -24,6 +22,15 @@
                 });
             event.preventDefault();
         };
+    };
+
+    ns.MissionMapping = {
+        key: function (data) {
+            return ko.utils.unwrapObservable(data.Id);
+        },
+        create: function (opt) {
+            return new ns.Mission(opt.data);
+        }
     };
     
 })(window.Avenger = window.Avenger || {});

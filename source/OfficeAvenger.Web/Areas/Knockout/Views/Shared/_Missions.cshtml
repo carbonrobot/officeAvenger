@@ -7,19 +7,21 @@
     <div class="clearfix">
         <div class="mission-name"><a data-bind="attr: { href: editMissionUri }, text: Name"></a></div>
         <div class="right">
-            <div class="mission-duration" data-bind="debug: $data, text: Duration"></div>
+            <div class="mission-duration" data-bind="debug: $data, text: Duration() + ' mins'"></div>
             <div class="mission-start">
-                <!-- ko ifnot: missionStarted -->
+                <!-- ko ifnot: MissionStart -->
                 <form data-bind="submit: startMission" class="inline hugme">
                     <input type="hidden" name="id" data-bind="value: Id" />
                     <a href="#" onclick="$(this).closest('form').submit();" class="button tiny hugme">Begin</a>
                 </form>
                 <!-- /ko -->
-                <!-- ko if: missionStarted -->
-                <!-- ko text:MissionStart --><!-- /ko -->
+                <!-- ko if: MissionStart -->
+                <span data-bind="text: moment(MissionStart()).format('h:mm A')"></span>
                 <!-- /ko -->
             </div>
-            <div class="mission-end" data-bind="text: MissionEnd"></div>
+            <!-- ko if: MissionEnd -->
+            <div class="mission-end" data-bind="text: moment(MissionEnd()).format('h:mm A')"></div>
+            <!-- /ko -->
         </div>
     </div>
     <div class="mission-team clearfix">

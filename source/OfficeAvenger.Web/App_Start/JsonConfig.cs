@@ -12,7 +12,8 @@ namespace OfficeAvenger.Web
         public static void Register()
         {
             var json = GlobalConfiguration.Configuration.Formatters.JsonFormatter;
-            json.SerializerSettings.PreserveReferencesHandling = PreserveReferencesHandling.All;
+            //json.SerializerSettings.PreserveReferencesHandling = PreserveReferencesHandling.None;
+            json.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
         }
     }
 }

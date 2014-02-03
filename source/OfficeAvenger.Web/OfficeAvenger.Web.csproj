@@ -198,6 +198,7 @@
     <Content Include="Scripts\vendor\knockout-3.0.0.js" />
     <Content Include="Scripts\vendor\knockout.mapping.js" />
     <Content Include="Scripts\vendor\modernizr.js" />
+    <Content Include="Scripts\vendor\moment.js" />
     <Content Include="Scripts\vendor\zepto.js" />
     <Content Include="Web.config" />
   </ItemGroup>

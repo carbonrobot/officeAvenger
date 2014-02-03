@@ -1,5 +1,6 @@
 ﻿$(function () {
-    var model = new Avenger.ViewModel();
+
+    // debugging knockout
     ko.bindingHandlers.debug =
     {
         init: function (element, valueAccessor) {
@@ -8,6 +9,8 @@
             console.log(valueAccessor());
         }
     };
+
+    var model = new Avenger.ViewModel();
     ko.applyBindings(model);
 
     model.loadTeam();

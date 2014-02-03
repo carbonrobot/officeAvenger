@@ -29,6 +29,7 @@ namespace OfficeAvenger.Web
             bundles.Add(new ScriptBundle("~/bundles/knockout").Include(
                         "~/Scripts/vendor/knockout-3.0.0.js",
                         "~/Scripts/vendor/knockout.mapping.js",
+                        "~/Scripts/vendor/moment.js",
                         "~/Scripts/areas/knockout/app.js",
                         "~/Scripts/areas/knockout/app-team.js",
                         "~/Scripts/areas/knockout/app-mission.js",

@@ -3,16 +3,6 @@
     var baseAddress = '/api';
     var getTeamUrl = baseAddress + '/team';
     var getMissionsUrl = baseAddress + '/mission';
-    
-
-    var missionMapping = {
-        key: function (data) {
-            return ko.utils.unwrapObservable(data.Id);
-        },
-        create: function (opt) {
-            return new ns.Mission(opt.data);
-        }
-    };
 
     ns.ViewModel = function() {
         var self = this;
@@ -21,7 +11,7 @@
         self.Team = ko.observableArray([]);
         self.Missions = ko.observableArray([]);
 
-        // get teams
+        // methods
         self.loadTeam = function () {
             self.loading.push(true);
 
@@ -31,14 +21,12 @@
                      self.loading.pop();
                  });
         };
-
-        // get missions
         self.loadMissions = function () {
             self.loading.push(true);
 
             $.getJSON(getMissionsUrl)
                 .done(function (data) {
-                    ko.mapping.fromJS(data, missionMapping, self.Missions);
+                    ko.mapping.fromJS(data, ns.MissionMapping, self.Missions);
                     self.loading.pop();
                 });
         };
