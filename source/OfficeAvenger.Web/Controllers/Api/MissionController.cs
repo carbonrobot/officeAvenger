@@ -1,18 +1,18 @@
 ﻿namespace OfficeAvenger.Web.Controllers.Api
 {
     using System.Collections.Generic;
+    using System.Web.Http;
     using System.Net;
     using System.Net.Http;
-    using System.Web.Http;
     using Domain;
     using Security;
 
     [Authorize]
-    public class TeamController : DataApiController
+    public class MissionController : DataApiController
     {
-        public IEnumerable<Avenger> Get()
+        public IEnumerable<Mission> Get()
         {
-            var response = this.DataService.GetAvengers(Shield.ActiveAgent.Id);
+            var response = this.DataService.GetActiveMissions(Shield.ActiveAgent.Id);
             if (response.HasError)
             {
                 throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.InternalServerError)

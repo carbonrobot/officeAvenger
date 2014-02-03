@@ -218,6 +218,8 @@
     <Compile Include="Areas\Razor\Models\EditTeamViewModel.cs" />
     <Compile Include="Areas\Razor\Models\HomeViewModel.cs" />
     <Compile Include="Areas\Razor\RazorAreaRegistration.cs" />
+    <Compile Include="Controllers\Api\DataApiController.cs" />
+    <Compile Include="Controllers\Api\MissionController.cs" />
     <Compile Include="Controllers\Api\TeamController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UnderworldController.cs" />

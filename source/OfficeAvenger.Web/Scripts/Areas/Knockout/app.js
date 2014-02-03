@@ -1,22 +1,32 @@
 ﻿var baseAddress = '/api';
 var getTeamUrl = baseAddress + '/team';
+var getMissionsUrl = baseAddress + '/mission';
 
 function AvengerViewModel() {
     var self = this;
 
+    // props
     self.Team = ko.observableArray([]);
+    self.Missions = ko.observableArray([]);
 
+    // get teams
     self.loadTeam = function () {
         self.loading.push(true);
 
-        $.ajax({
-            dataType: 'json',
-            url: getTeamUrl,
-            xhrFields: {
-                withCredentials: true
-            }
-        }).done(function (data) {
-                self.Team(data);
+        $.getJSON(getTeamUrl)
+             .done(function (data) {
+                 self.Team(data);
+                 self.loading.pop();
+             });
+    };
+
+    // get missions
+    self.loadMissions = function () {
+        self.loading.push(true);
+
+        $.getJSON(getMissionsUrl)
+            .done(function (data) {
+                self.Missions(data);
                 self.loading.pop();
             });
     };
@@ -30,5 +40,5 @@ $(function () {
     ko.applyBindings(model);
 
     model.loadTeam();
+    model.loadMissions();
 });
-
