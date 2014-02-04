@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Cappuccino";
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="row">
+        <div class="columns small-12">
+            @Html.Partial("_Messages")
+        </div>
+    </div>
+    <div class="row">
+        <div class="columns small-12 large-4">
+            @Html.Partial("_Avengers")
+        </div>
+        <div class="columns small-12 large-8">
+            @Html.Partial("_Missions")
+        </div>
+    </div>
+    
+    @Html.Partial("~/Areas/Cappuccino/Views/Team/_Edit.cshtml")
+    @Html.Partial("~/Areas/Cappuccino/Views/Mission/_Edit.cshtml")
+}
+else
+{
+    @Html.Partial("_Login")
+}
