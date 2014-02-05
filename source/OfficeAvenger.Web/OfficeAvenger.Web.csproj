@@ -211,8 +211,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\SecurityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Areas\Cappuccino\Controllers\HomeController.cs" />
-    <Compile Include="Areas\Cappuccino\CappuccinoAreaRegistration.cs" />
     <Compile Include="Areas\Knockout\Controllers\HomeController.cs" />
     <Compile Include="Areas\Knockout\KnockoutAreaRegistration.cs" />
     <Compile Include="Areas\Razor\Controllers\HomeController.cs" />
@@ -271,15 +269,6 @@
     <Content Include="NLog.config" />
     <Content Include="Areas\Knockout\Views\Team\_Edit.cshtml" />
     <Content Include="Areas\Knockout\Views\Mission\_Edit.cshtml" />
-    <Content Include="Areas\Cappuccino\Views\Home\Index.cshtml" />
-    <Content Include="Areas\Cappuccino\Views\Mission\_Edit.cshtml" />
-    <Content Include="Areas\Cappuccino\Views\Shared\_Agent.cshtml" />
-    <Content Include="Areas\Cappuccino\Views\Shared\_Avengers.cshtml" />
-    <Content Include="Areas\Cappuccino\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Cappuccino\Views\Shared\_Missions.cshtml" />
-    <Content Include="Areas\Cappuccino\Views\Team\_Edit.cshtml" />
-    <Content Include="Areas\Cappuccino\Views\Web.config" />
-    <Content Include="Areas\Cappuccino\Views\_ViewStart.cshtml" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -292,9 +281,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Cappuccino\Models\" />
     <Folder Include="Areas\Knockout\Models\" />
-    <Folder Include="Scripts\Areas\Cappuccino\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OfficeAvenger.Domain.Data\OfficeAvenger.Domain.Data.csproj">

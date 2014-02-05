@@ -1,7 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OfficeAvenger.Web", "OfficeAvenger.Web\OfficeAvenger.Web.csproj", "{1BE2A10C-60E3-4788-B547-56BD4F0569AD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9702A96A-403D-42D5-87F6-3C7869D2B087} = {9702A96A-403D-42D5-87F6-3C7869D2B087}
+		{8448368F-4189-421B-A77A-814CC7600B04} = {8448368F-4189-421B-A77A-814CC7600B04}
+		{123A90C4-9117-4B3F-B60F-085677B694A4} = {123A90C4-9117-4B3F-B60F-085677B694A4}
+		{83BA81E1-B8B5-4B6E-A831-FCB02A4D9C01} = {83BA81E1-B8B5-4B6E-A831-FCB02A4D9C01}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OfficeAvenger.Domain", "OfficeAvenger.Domain\OfficeAvenger.Domain.csproj", "{123A90C4-9117-4B3F-B60F-085677B694A4}"
 EndProject
