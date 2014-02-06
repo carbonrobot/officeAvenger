@@ -1,0 +1,13 @@
+﻿@using System.Web.Optimization
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Framework = "ASP.NET MVC + Knockout";
+}
+@if (User.Identity.IsAuthenticated)
+{
+    @Html.Partial("_Agent")
+}
+@RenderBody()
+@section scripts{
+    @Scripts.Render("~/bundles/knockout")
+}

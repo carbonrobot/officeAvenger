@@ -161,6 +161,10 @@
     <Content Include="Scripts\Areas\Knockout\app-viewmodel.js" />
     <Content Include="Scripts\Areas\Knockout\app-team.js" />
     <Content Include="Scripts\Areas\Razor\app.js" />
+    <Content Include="Scripts\Areas\Vue\app-mission.js" />
+    <Content Include="Scripts\Areas\Vue\app-team.js" />
+    <Content Include="Scripts\Areas\Vue\app-viewmodel.js" />
+    <Content Include="Scripts\Areas\Vue\app.js" />
     <Content Include="Scripts\foundation\foundation.abide.js" />
     <Content Include="Scripts\foundation\foundation.alerts.js" />
     <Content Include="Scripts\foundation\foundation.clearing.js" />
@@ -220,6 +224,8 @@
     <Compile Include="Areas\Razor\Models\EditTeamViewModel.cs" />
     <Compile Include="Areas\Razor\Models\HomeViewModel.cs" />
     <Compile Include="Areas\Razor\RazorAreaRegistration.cs" />
+    <Compile Include="Areas\Vue\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Vue\VueAreaRegistration.cs" />
     <Compile Include="Controllers\Api\DataApiController.cs" />
     <Compile Include="Controllers\Api\MissionController.cs" />
     <Compile Include="Controllers\Api\ServiceResponseExtensions.cs" />
@@ -269,6 +275,15 @@
     <Content Include="NLog.config" />
     <Content Include="Areas\Knockout\Views\Team\_Edit.cshtml" />
     <Content Include="Areas\Knockout\Views\Mission\_Edit.cshtml" />
+    <Content Include="Areas\Vue\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Vue\Views\Mission\_Edit.cshtml" />
+    <Content Include="Areas\Vue\Views\Shared\_Agent.cshtml" />
+    <Content Include="Areas\Vue\Views\Shared\_Avengers.cshtml" />
+    <Content Include="Areas\Vue\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Vue\Views\Shared\_Missions.cshtml" />
+    <Content Include="Areas\Vue\Views\Team\_Edit.cshtml" />
+    <Content Include="Areas\Vue\Views\Web.config" />
+    <Content Include="Areas\Vue\Views\_ViewStart.cshtml" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -282,6 +297,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Knockout\Models\" />
+    <Folder Include="Areas\Vue\Models\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OfficeAvenger.Domain.Data\OfficeAvenger.Domain.Data.csproj">
