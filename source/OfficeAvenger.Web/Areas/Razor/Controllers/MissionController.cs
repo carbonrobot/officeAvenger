@@ -82,5 +82,15 @@ namespace OfficeAvenger.Web.Areas.Razor.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            var response = this.DataService.DeleteMission(id, Shield.ActiveAgent.Id);
+            if (response.HasError)
+                return WithError(Redirect("/razor"), "Do not submit invalid information!");
+
+            return WithSuccess(RedirectToAction("Index", "Home"), "Successfully ended that mission.");
+        }
     }
 }

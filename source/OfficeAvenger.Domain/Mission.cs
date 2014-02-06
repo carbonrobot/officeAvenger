@@ -12,6 +12,23 @@ namespace OfficeAvenger.Domain
         }
 
         /// <summary>
+        /// Gets a value indicating whether this <see cref="Mission"/> is completed.
+        /// </summary>
+        /// <value><c>true</c> if completed; otherwise, <c>false</c>.</value>
+        public bool Completed
+        {
+            get
+            {
+                if (MissionEnd.HasValue)
+                {
+                    if (DateTime.Now >= MissionEnd.Value)
+                        return true;
+                }
+                return false;
+            }
+        }
+
+        /// <summary>
         /// Gets or sets the duration of this mission in minutes
         /// </summary>
         public int Duration

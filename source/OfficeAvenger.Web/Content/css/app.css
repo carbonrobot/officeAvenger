@@ -23,18 +23,25 @@
 
 /* Agents */
 .agent-panel { background: #F8F8F8; padding: 1.0em; position: absolute; top: 45px; left: 0; right: 0; }
+.trash-form { margin-top: 10px; margin-left: 7px; display: none; }
 
 /* Team listings */
 .team-member { margin-bottom: 10px; }
 .team-member-name { margin-top: 15px; }
+.team-member:hover .trash-form { display: inline-block; }
 
 /* Missions */
 .mission {  }
-.mission-name { float: left; font-size:1.2em; }
+.mission-name { float: left; font-size:1.2em; height: 24px; }
 .mission-duration, .mission-start, .mission-end { display:inline-block; width: 100px; }
 .mission-duration {  }
 .mission-start {  }
 .mission-end {  }
 .mission-team { margin-top: 5px; }
+.mission .trash-form { margin-top: 0; }
+.mission:hover .trash-form { display: inline-block; margin-top: -3px; margin-right: 7px; }
 
 .loading-img { height: 20px; width: 160px; margin: 15px 0; background-image: url(/content/images/preloader.gif); }
+.trash-medium { width: 64px; height: 64px; }
+.trash-small { width: 24px; height: 24px; }
+.trash-tiny { width: 16px; height: 16px; }

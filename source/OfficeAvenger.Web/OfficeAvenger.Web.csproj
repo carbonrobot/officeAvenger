@@ -155,6 +155,7 @@
     <Content Include="Content\images\ajax-loader.gif" />
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\preloader.GIF" />
+    <Content Include="Content\images\Trash-128.png" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\Areas\Knockout\app.js" />
     <Content Include="Scripts\Areas\Knockout\app-mission.js" />

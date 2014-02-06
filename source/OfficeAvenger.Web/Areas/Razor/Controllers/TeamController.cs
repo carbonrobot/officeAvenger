@@ -45,5 +45,15 @@ namespace OfficeAvenger.Web.Areas.Razor.Controllers
             return WithSuccess(RedirectToAction("Index", "Home"), "{0} is now available for missions".FormatWith(model.Avenger.Name));
         }
 
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            var response = this.DataService.DeleteAvenger(id, Shield.ActiveAgent.Id);
+            if (response.HasError)
+                return WithError(Redirect("/razor"), "Do not submit invalid information!");
+
+            return WithSuccess(RedirectToAction("Index", "Home"), "Successfully reallocated resources.");
+        }
+
     }
 }

@@ -10,7 +10,12 @@
         <div class="left team-member-name">
             <a href="/razor/team/@hero.Id/edit">@hero.Name</a>
         </div>
+        <div class="right trash-form">
+            <form action="/razor/team/delete" method="post" class="inline hugme">
+                <input type="hidden" name="Id" value="@hero.Id" />
+                <img class="trash-small" src="/content/images/trash-128.png" onclick="$(this).closest('form').submit();" />
+            </form>
+        </div>
     </div>
 }
 <a class="button" href="/razor/team/add">New Team Member</a>
-
