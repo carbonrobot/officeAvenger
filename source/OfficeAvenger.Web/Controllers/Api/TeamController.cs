@@ -23,5 +23,12 @@
         {
             return this.DataService.UpdateAvenger(model, Shield.ActiveAgent.Id).GoBabyGo();
         }
+
+        // api/team/delete/16
+        [HttpPost]
+        public void Delete(int id)
+        {
+            this.DataService.DeleteAvenger(id, Shield.ActiveAgent.Id).GoBabyGo();
+        }
     }
 }
