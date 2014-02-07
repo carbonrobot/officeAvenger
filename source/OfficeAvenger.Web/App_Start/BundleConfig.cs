@@ -36,6 +36,12 @@ namespace OfficeAvenger.Web
                         "~/Scripts/areas/knockout/app-team.js",
                         "~/Scripts/areas/knockout/app-mission.js"
                         ));
+
+            bundles.Add(new ScriptBundle("~/bundles/angular").Include(
+                        "~/Scripts/vendor/angular.js",
+                        "~/Scripts/vendor/moment.js",
+                        "~/Scripts/areas/angular/app.js"
+                        ));
         }
     }
 }

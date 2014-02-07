@@ -1,8 +1,4 @@
-﻿@{
-    ViewBag.Title = "Knockout";
-}
-
-@if (User.Identity.IsAuthenticated)
+﻿@if (User.Identity.IsAuthenticated)
 {
     <div class="row">
         <div class="columns small-12 large-4">
@@ -12,9 +8,6 @@
             @Html.Partial("_Missions")
         </div>
     </div>
-    
-    @Html.Partial("~/Areas/Knockout/Views/Team/_Edit.cshtml")
-    @Html.Partial("~/Areas/Knockout/Views/Mission/_Edit.cshtml")
 }
 else
 {

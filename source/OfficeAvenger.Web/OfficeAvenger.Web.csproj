@@ -156,7 +156,9 @@
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\preloader.GIF" />
     <Content Include="Content\images\Trash-128.png" />
+    <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\Areas\Angular\app.js" />
     <Content Include="Scripts\Areas\Knockout\app-common.js" />
     <Content Include="Scripts\Areas\Knockout\app.js" />
     <Content Include="Scripts\Areas\Knockout\app-mission.js" />
@@ -182,6 +184,7 @@
     <Content Include="Scripts\foundation\foundation.section.js" />
     <Content Include="Scripts\foundation\foundation.tooltips.js" />
     <Content Include="Scripts\foundation\foundation.topbar.js" />
+    <Content Include="Scripts\vendor\angular.js" />
     <Content Include="Scripts\vendor\foundation\foundation.abide.js" />
     <Content Include="Scripts\vendor\foundation\foundation.alerts.js" />
     <Content Include="Scripts\vendor\foundation\foundation.clearing.js" />
@@ -216,6 +219,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\SecurityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Angular\AngularAreaRegistration.cs" />
+    <Compile Include="Areas\Angular\Controllers\HomeController.cs" />
     <Compile Include="Areas\Knockout\Controllers\HomeController.cs" />
     <Compile Include="Areas\Knockout\KnockoutAreaRegistration.cs" />
     <Compile Include="Areas\Razor\Controllers\HomeController.cs" />
@@ -285,6 +290,13 @@
     <Content Include="Areas\Vue\Views\Team\_Edit.cshtml" />
     <Content Include="Areas\Vue\Views\Web.config" />
     <Content Include="Areas\Vue\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Angular\Views\web.config" />
+    <Content Include="Areas\Angular\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Angular\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Angular\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Angular\Views\Shared\_Missions.cshtml" />
+    <Content Include="Areas\Angular\Views\Shared\_Avengers.cshtml" />
+    <Content Include="Areas\Angular\Views\Shared\_Agent.cshtml" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -297,6 +309,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Angular\Models\" />
     <Folder Include="Areas\Knockout\Models\" />
     <Folder Include="Areas\Vue\Models\" />
   </ItemGroup>
