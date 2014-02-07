@@ -1,4 +1,15 @@
-﻿<div id="team-view">
+﻿<div id="team-view" data-ng-controller="TeamController" data-ng-cloak>
     <h4>Avengers</h4>
-    
+    <div class="team-member clearfix" ng-repeat="hero in team">
+        <div class="left">
+            <img data-ng-src="{{ hero.Avatar }}" class="avatar" />
+        </div>
+        <div class="left team-member-name">
+            <a href="#">{{ hero.Name }}</a>
+        </div>
+        <div class="right trash-form">
+            <img class="trash-small" src="/content/images/trash-128.png" />
+        </div>
+    </div>
+    <a class="button" href="#">New Team Member</a>
 </div>
