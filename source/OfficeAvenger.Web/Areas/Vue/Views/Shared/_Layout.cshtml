@@ -1,7 +1,7 @@
 ﻿@using System.Web.Optimization
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Framework = "ASP.NET MVC + Knockout";
+    ViewBag.Framework = "Vue.js";
 }
 @if (User.Identity.IsAuthenticated)
 {
@@ -9,5 +9,5 @@
 }
 @RenderBody()
 @section scripts{
-    @Scripts.Render("~/bundles/knockout")
+    @Scripts.Render("~/bundles/Vue")
 }
