@@ -32,9 +32,9 @@ namespace OfficeAvenger.Web
                         "~/Scripts/vendor/knockout.mapping.js",
                         "~/Scripts/vendor/moment.js",
                         "~/Scripts/areas/knockout/app.js",
+                        "~/Scripts/areas/knockout/app-common.js",
                         "~/Scripts/areas/knockout/app-team.js",
-                        "~/Scripts/areas/knockout/app-mission.js",
-                        "~/Scripts/areas/knockout/app-viewmodel.js"
+                        "~/Scripts/areas/knockout/app-mission.js"
                         ));
         }
     }

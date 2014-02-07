@@ -26,9 +26,9 @@
             return this.DataService.GetMission(id, Shield.ActiveAgent.Id).GoBabyGo();
         }
 
-        // api/mission
+        // api/mission/update
         [HttpPost]
-        public Mission Post(Mission model)
+        public Mission Update(Mission model)
         {
             return this.DataService.UpdateMission(model, Shield.ActiveAgent.Id).GoBabyGo();
         }
@@ -48,7 +48,7 @@
         }
 
         // api/mission/delete/12
-        [HttpPost]
+        [HttpDelete]
         public void Delete(int id)
         {
             this.DataService.DeleteMission(id, Shield.ActiveAgent.Id).GoBabyGo();

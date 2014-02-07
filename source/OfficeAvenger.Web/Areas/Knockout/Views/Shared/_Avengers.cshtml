@@ -1,15 +1,20 @@
-﻿<h4>Avengers</h4>
-<!-- ko if: loading().length -->
-<div class="loading-img"></div>
-<!-- /ko -->
-<!-- ko foreach: Team -->
-<div class="team-member clearfix" style="display: none;" data-bind="visible: true">
-    <div class="left">
-        <img data-bind="attr: { src: Avatar }" class="avatar" />
+﻿<div id="team-view">
+    <h4>Avengers</h4>
+    <!-- ko if: loading().length -->
+    <div class="loading-img"></div>
+    <!-- /ko -->
+    <!-- ko foreach: team -->
+    <div class="team-member clearfix" style="display: none;" data-bind="visible: true">
+        <div class="left">
+            <img data-bind="attr: { src: Avatar }" class="avatar" />
+        </div>
+        <div class="left team-member-name">
+            <a href="#" data-bind="text: Name, click: $parent.editTeam"></a>
+        </div>
+        <div class="right trash-form">
+            <img class="trash-small" src="/content/images/trash-128.png" data-bind="click: $parent.deleteTeam" />
+        </div>
     </div>
-    <div class="left team-member-name">
-        <a href="#" data-bind="text: Name, click: $parent.editTeam"></a>
-    </div>
+    <!-- /ko -->
+    <a class="button" href="#" data-bind="click: addTeam">New Team Member</a>
 </div>
-<!-- /ko -->
-<a class="button" href="#" data-bind="click: addTeam">New Team Member</a>

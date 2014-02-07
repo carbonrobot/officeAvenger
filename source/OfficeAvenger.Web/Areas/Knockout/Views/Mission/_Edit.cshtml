@@ -1,4 +1,4 @@
-﻿<div id="editMissionModal" class="reveal-modal large" data-bind="with: SelectedMission" data-reveal>
+﻿<div id="editMissionModal" class="reveal-modal large" data-bind="with: selectedMission" data-reveal>
     <form data-bind="submit: $parent.updateMission">
     <input type="hidden" name="id" data-bind="value: Id" />
     <input type="hidden" name="agentId" value="@OfficeAvenger.Web.Security.Shield.ActiveAgent.Id" />
@@ -48,9 +48,9 @@
 
     <h5>On Standby</h5>
     <div class="clearfix">
-        <!-- ko foreach: $parent.StandbyTeam -->
+        <!-- ko foreach: $parent.standbyTeam -->
         <form class="inline" data-bind="submit: $root.addHero">
-            <input type="hidden" name="missionId" data-bind="value: $root.SelectedMission().Id" />
+            <input type="hidden" name="missionId" data-bind="value: $root.selectedMission().Id" />
             <input type="hidden" name="avengerId" data-bind="value: Id" />
             <img class="avatar clickable" data-bind="attr: { src: Avatar }" onclick="$(this).closest('form').submit();" />
         </form>

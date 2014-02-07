@@ -157,9 +157,9 @@
     <Content Include="Content\images\preloader.GIF" />
     <Content Include="Content\images\Trash-128.png" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\Areas\Knockout\app-common.js" />
     <Content Include="Scripts\Areas\Knockout\app.js" />
     <Content Include="Scripts\Areas\Knockout\app-mission.js" />
-    <Content Include="Scripts\Areas\Knockout\app-viewmodel.js" />
     <Content Include="Scripts\Areas\Knockout\app-team.js" />
     <Content Include="Scripts\Areas\Razor\app.js" />
     <Content Include="Scripts\Areas\Vue\app-mission.js" />
