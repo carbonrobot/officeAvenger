@@ -297,6 +297,8 @@
     <Content Include="Areas\Angular\Views\Shared\_Missions.cshtml" />
     <Content Include="Areas\Angular\Views\Shared\_Avengers.cshtml" />
     <Content Include="Areas\Angular\Views\Shared\_Agent.cshtml" />
+    <Content Include="Areas\Angular\Views\Mission\_Edit.cshtml" />
+    <Content Include="Areas\Angular\Views\Team\_Edit.cshtml" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
