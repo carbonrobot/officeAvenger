@@ -159,7 +159,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\Areas\Angular\app.js" />
-    <Content Include="Scripts\Areas\Knockout\app-common.js" />
     <Content Include="Scripts\Areas\Knockout\app.js" />
     <Content Include="Scripts\Areas\Knockout\app-mission.js" />
     <Content Include="Scripts\Areas\Knockout\app-team.js" />
@@ -168,6 +167,7 @@
     <Content Include="Scripts\Areas\Vue\app-team.js" />
     <Content Include="Scripts\Areas\Vue\app-viewmodel.js" />
     <Content Include="Scripts\Areas\Vue\app.js" />
+    <Content Include="Scripts\common.js" />
     <Content Include="Scripts\foundation\foundation.abide.js" />
     <Content Include="Scripts\foundation\foundation.alerts.js" />
     <Content Include="Scripts\foundation\foundation.clearing.js" />
@@ -309,7 +309,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Angular\Models\" />
     <Folder Include="Areas\Knockout\Models\" />
     <Folder Include="Areas\Vue\Models\" />
   </ItemGroup>
