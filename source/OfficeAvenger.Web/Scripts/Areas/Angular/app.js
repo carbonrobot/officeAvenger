@@ -1,24 +1,20 @@
 ﻿
-var officeAvengerApp = angular.module('officeAvengerApp', []);
-officeAvengerApp.controller('TeamController', function ($scope) {
+var app = angular.module('officeAvengerApp', []);
 
-    $scope.team = [
-        {
-            Name: 'Iron Man',
-            Avatar: ''
-        },
-        {
-            Name: 'Thor',
-            Avatar: ''
-        },
-        {
-            Name: 'Captain America',
-            Avatar: ''
-        }
-    ];
+// team controller
+app.controller('TeamController', function ($scope, $http) {
+
+    $http.get('/api/team').success(function(data) {
+        $scope.team = data;
+    });
 
 });
 
-$(function () {
+// mission controller
+app.controller('MissionController', function ($scope, $http) {
+
+    $http.get('/api/mission').success(function (data) {
+        $scope.missions = data;
+    });
 
 });
