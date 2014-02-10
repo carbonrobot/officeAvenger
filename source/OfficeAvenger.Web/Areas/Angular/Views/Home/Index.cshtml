@@ -1,16 +1,6 @@
 ﻿@if (User.Identity.IsAuthenticated)
 {
-    <div class="row">
-        <div class="columns small-12 large-4">
-            @Html.Partial("_Avengers")
-        </div>
-        <div class="columns small-12 large-8">
-            @Html.Partial("_Missions")
-        </div>
-    </div>
-
-    @Html.Partial("~/Areas/Angular/Views/Team/_Edit.cshtml")
-    @Html.Partial("~/Areas/Angular/Views/Mission/_Edit.cshtml")
+    <div ng-view></div>
 }
 else
 {

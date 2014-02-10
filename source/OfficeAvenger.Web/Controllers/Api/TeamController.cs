@@ -17,6 +17,13 @@
             return this.DataService.GetAvengers(Shield.ActiveAgent.Id).GoBabyGo();
         }
 
+        // api/team/89
+        [HttpGet]
+        public Avenger Get(int id)
+        {
+            return this.DataService.GetAvenger(id, Shield.ActiveAgent.Id).GoBabyGo();
+        }
+
         // api/team
         [HttpPost]
         public Avenger Post(Avenger model)
