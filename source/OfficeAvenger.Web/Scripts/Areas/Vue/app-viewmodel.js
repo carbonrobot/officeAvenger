@@ -1,4 +1,19 @@
-﻿(function (ns, $, undefined) {
+﻿var vm = new Vue({
+    data:
+        {
+            baseAddress: '/api',
+            getTeamUrl: baseAddress + '/team',
+            editTeamUrl: baseAddress + '/team'
+        },
+
+    methods:
+        {
+
+        }
+
+})
+/*
+(function (ns, $, undefined) {
     
     var baseAddress = '/api';
     var getTeamUrl = baseAddress + '/team';
@@ -151,3 +166,4 @@
     };
     
 })(window.Avenger = window.Avenger || {}, jQuery);
+*/

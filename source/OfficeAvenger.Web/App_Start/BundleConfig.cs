@@ -46,6 +46,14 @@ namespace OfficeAvenger.Web
                         "~/Scripts/areas/angular/controllers/*.js",
                         "~/Scripts/areas/angular/app.js"
                         ));
+
+            bundles.Add(new ScriptBundle("~/bundles/vue").Include(
+                        "~/Scripts/vendor/vue.min.js",
+                        "~/Scripts/areas/vue/app.js"
+                        //"~/Scripts/areas/vue/app-viewmodel.js",
+                        //"~/Scripts/areas/vue/app-team.js",
+                        //"~/Scripts/areas/vue/app-mission.js"
+                ));
         }
     }
 }

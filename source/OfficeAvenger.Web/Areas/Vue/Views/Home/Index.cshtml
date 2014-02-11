@@ -5,17 +5,17 @@
 @if (User.Identity.IsAuthenticated)
 {
     <div class="row">
-        <div class="columns small-12">
+        @*<div class="columns small-12">
             @Html.Partial("_Messages")
-        </div>
+        </div>*@
     </div>
     <div class="row">
         <div class="columns small-12 large-4">
             @Html.Partial("_Avengers")
         </div>
-        <div class="columns small-12 large-8">
+        @*<div class="columns small-12 large-8">
             @Html.Partial("_Missions")
-        </div>
+        </div>*@
     </div>
     
     @Html.Partial("~/Areas/Vue/Views/Team/_Edit.cshtml")
