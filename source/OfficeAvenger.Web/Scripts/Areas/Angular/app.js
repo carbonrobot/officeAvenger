@@ -1,23 +1,40 @@
-﻿(function (ns) {
-    
-    // ***************
-    // Application
-    // ***************
-
-    ns.app = angular.module('app', ['ngRoute', 'appControllers', 'appServices'])
-        .config(function ($routeProvider) {
+﻿
+// ***************
+// application
+// ***************
+var app = angular.module('app', ['ngRoute', 'app.services', 'app.controllers'])
+        .config(function ($routeProvider, $locationProvider) {
             $routeProvider.
-              when('/', {
-                  controller: 'HomeController',
-                  templateUrl: '/areas/angular/views/home/_index.html'
-              }).
-              when('/team/edit/:id', {
-                  controller: 'TeamController',
-                  templateUrl: '/areas/angular/views/team/_edit.html'
-              }).
-              otherwise({
-                  redirectTo: '/',
-              });
+                when('/angular', {
+                    controller: 'HomeController',
+                    templateUrl: '/areas/angular/views/home/_index.html'
+                }).
+                when('/angular/team/add', {
+                    controller: 'TeamController',
+                    templateUrl: '/areas/angular/views/team/_edit.html'
+                }).
+                when('/angular/team/edit/:id', {
+                    controller: 'TeamController',
+                    templateUrl: '/areas/angular/views/team/_edit.html'
+                }).
+                when('/angular/mission/add', {
+                    controller: 'MissionController',
+                    templateUrl: '/areas/angular/views/mission/_edit.html'
+                }).
+                when('/angular/mission/edit/:id', {
+                    controller: 'MissionController',
+                    templateUrl: '/areas/angular/views/mission/_edit.html'
+                }).
+                otherwise({
+                    redirectTo: '/angular',
+                });
+
+            $locationProvider.html5Mode(true)
+                             .hashPrefix('!');
         });
 
-})(window.officeAvenger = window.officeAvenger || {})
+// ***************
+// modules
+// ***************
+app.services = angular.module('app.services', []);
+app.controllers = angular.module('app.controllers', ['app.services']);

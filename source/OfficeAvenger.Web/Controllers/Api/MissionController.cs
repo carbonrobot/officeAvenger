@@ -30,6 +30,9 @@
         [HttpPost]
         public Mission Update(Mission model)
         {
+            if (model.AgentId < 1)
+                model.AgentId = Shield.ActiveAgent.Id;
+            
             return this.DataService.UpdateMission(model, Shield.ActiveAgent.Id).GoBabyGo();
         }
 

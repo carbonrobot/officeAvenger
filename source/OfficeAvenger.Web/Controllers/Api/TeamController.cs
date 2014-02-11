@@ -28,6 +28,9 @@
         [HttpPost]
         public Avenger Post(Avenger model)
         {
+            if (model.AgentId < 1)
+                model.AgentId = Shield.ActiveAgent.Id;
+
             return this.DataService.UpdateAvenger(model, Shield.ActiveAgent.Id).GoBabyGo();
         }
 

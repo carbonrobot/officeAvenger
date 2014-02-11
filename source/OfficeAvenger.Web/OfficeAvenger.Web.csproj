@@ -162,12 +162,10 @@
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\Areas\Angular\app.js" />
-    <Content Include="Scripts\Areas\Angular\controllers\controllers.js" />
     <Content Include="Scripts\Areas\Angular\controllers\homeController.js" />
     <Content Include="Scripts\Areas\Angular\controllers\missionController.js" />
     <Content Include="Scripts\Areas\Angular\controllers\teamController.js" />
     <Content Include="Scripts\Areas\Angular\services\missionService.js" />
-    <Content Include="Scripts\Areas\Angular\services\services.js" />
     <Content Include="Scripts\Areas\Angular\services\teamService.js" />
     <Content Include="Scripts\Areas\Knockout\app.js" />
     <Content Include="Scripts\Areas\Knockout\app-mission.js" />
@@ -308,7 +306,7 @@
     <Content Include="Areas\Angular\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Angular\Views\Home\Index.cshtml" />
     <Content Include="Areas\Angular\Views\Shared\_Agent.cshtml" />
-    <Content Include="Areas\Angular\Views\Mission\_Edit.cshtml" />
+    <Content Include="Areas\Angular\Views\Mission\_Edit.html" />
     <Content Include="Areas\Angular\Views\Team\_Edit.html" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>

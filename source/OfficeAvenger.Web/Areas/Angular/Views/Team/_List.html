@@ -1,13 +1,14 @@
 ﻿<h4>Avengers</h4>
+<div class="loading-img" data-ng-if="loadingTeam"></div>
 <div class="team-member clearfix" data-ng-repeat="hero in team">
     <div class="left">
         <img data-ng-src="{{ hero.Avatar }}" class="avatar" />
     </div>
     <div class="left team-member-name">
-        <a href="#/team/edit/{{ hero.Id }}">{{ hero.Name }}</a>
+        <a href="/angular/team/edit/{{ hero.Id }}">{{ hero.Name }}</a>
     </div>
     <div class="right trash-form">
         <img class="trash-small" src="/content/images/trash-128.png" />
     </div>
 </div>
-<a class="button" href="#/team/add">New Team Member</a>
+<a class="button" href="/angular/team/add">New Team Member</a>

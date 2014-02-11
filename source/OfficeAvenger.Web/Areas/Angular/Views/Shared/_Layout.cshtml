@@ -1,13 +1,22 @@
 ﻿@using System.Web.Optimization
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Framework = ViewBag.Title = "AngularJS";
+    ViewBag.Framework = ViewBag.Title = "Angular";
 }
 @if (User.Identity.IsAuthenticated)
 {
     @Html.Partial("_Agent")
 }
 <div data-ng-app="app">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <div ng-view></div>
+    }
+    else
+    {
+        @Html.Partial("_Login")
+    }
+
     @RenderBody()
 </div>
 @section scripts{

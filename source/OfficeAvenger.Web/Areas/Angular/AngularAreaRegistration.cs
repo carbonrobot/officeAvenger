@@ -16,7 +16,7 @@ namespace OfficeAvenger.Web.Areas.Angular
         {
             context.MapRoute(
                 "Angular_default",
-                "Angular/{controller}/{action}",
+                "Angular/{*url}",
                 new { controller = "Home", action = "Index" }
             );
         }

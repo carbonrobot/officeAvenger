@@ -1,0 +1,54 @@
+﻿<div class="row">
+    <div class="column small-12 large-8 small-centered">
+        <form data-ng-submit="updateMission()">
+        <input type="hidden" name="id" data-ng-model="mission.Id" />
+
+        <h4>{{ title }}</h4>
+        <div class="panel">
+            <div class="row">
+                <div class="small-12 column">
+                    <label for="name">Mission Description</label>
+                    <input type="text" name="name" placeholder="Mission Description" autofocus="autofocus" data-ng-model="mission.Name" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-12 large-4 column">
+                    <label for="avatar">Duration</label>
+                    <input type="text" name="duration" placeholder="Duration (mins)" data-ng-model="mission.Duration" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-12 column">
+                    <input type="submit" class="small button right" value="Update" />
+                </div>
+            </div>
+        </div>
+
+        </form>
+
+        <div data-ng-if="mission.Id">
+            <h5>Selected Team</h5>
+
+            <div class="clearfix" data-ng-if="mission.Team.length > 0">
+                <form class="inline" data-ng-repeat="hero in mission.Team">
+                <input type="hidden" name="missionId" value="{{mission.Id}}" />
+                <input type="hidden" name="avengerId" value="{{hero.Id}}" />
+                <img class="avatar clickable" data-ng-src="{{hero.Avatar}}" onclick="$(this).closest('form').submit();" />
+                </form>
+            </div>
+            <div class="alert-box" data-ng-if="mission.Team.length <= 0">
+                Choose your team members for this mission.
+            </div>
+
+            <h5>On Standby</h5>
+            <div class="clearfix">
+                <form class="inline" data-ng-repeat="hero in standbyTeam">
+                <input type="hidden" name="missionId" value="{{mission.Id}}" />
+                <input type="hidden" name="avengerId" value="{{hero.Id}}" />
+                <img class="avatar clickable" data-ng-src="{{hero.Avatar}}" onclick="$(this).closest('form').submit();" />
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

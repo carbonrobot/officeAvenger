@@ -1,17 +1,21 @@
 ﻿// ***************
 // Index / Home page controller
 // ***************
-(function (ns) {
+app.controllers.controller('HomeController', ['$scope', '$http', 'teamService', 'missionService', function ($scope, $http, teamService, missionService) {
 
-    ns.controllers.controller('HomeController', ['$scope', '$http', function ($scope, $http) {
+    $scope.loadingTeam = true;
+    $scope.loadingMissions = true;
+    $scope.missions = [];
+    $scope.team = [];
 
-        $http.get(ns.urls.getMissionsUrl).success(function (data) {
-            $scope.missions = data;
-        });
-        $http.get(ns.urls.getTeamUrl).success(function (data) {
-            $scope.team = data;
-        });
+    teamService.list(function (data) {
+        $scope.team = data;
+        $scope.loadingTeam = false;
+    });
 
-    }]);
+    missionService.list(function (data) {
+        $scope.missions = data;
+        $scope.loadingMissions = false;
+    });
 
-})(window.officeAvenger = window.officeAvenger || {})
+}]);

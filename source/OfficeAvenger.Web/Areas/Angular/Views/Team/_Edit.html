@@ -2,9 +2,8 @@
     <div class="column small-12 large-8 small-centered">
         <form data-ng-submit="updateAvenger()">
         <input type="hidden" name="id" data-ng-model="avenger.Id"/>
-        <input type="hidden" name="agentId" value="@OfficeAvenger.Web.Security.Shield.ActiveAgent.Id" />
 
-        <h4>Update Team</h4>
+        <h4>{{ title }}</h4>
         <div class="panel">
             <div class="row">
                 <div class="small-12 column">

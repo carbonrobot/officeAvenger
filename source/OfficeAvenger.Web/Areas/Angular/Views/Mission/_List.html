@@ -1,7 +1,8 @@
 ﻿<h4>Missions</h4>
+<div class="loading-img" data-ng-if="loadingMissions"></div>
 <div class="mission crush" data-ng-repeat="mission in missions">
     <div class="clearfix">
-        <div class="mission-name"><a href="#">{{ mission.Name }}</a></div>
+        <div class="mission-name"><a href="/angular/mission/edit/{{mission.Id}}">{{ mission.Name }}</a></div>
         <div class="right">
             <div class="mission-duration">{{ mission.Duration }} mins</div>
             <div class="mission-start">
@@ -18,4 +19,4 @@
         <img data-ng-repeat="hero in mission.Team" data-ng-src="{{ hero.Avatar }}" title="{{ hero.Name }}" class="left avatar" />
     </div>
 </div>
-<a class="button" href="#">New Mission</a>
+<a class="button" href="/angular/mission/add">New Mission</a>
