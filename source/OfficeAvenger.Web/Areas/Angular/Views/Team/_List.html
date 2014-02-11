@@ -1,15 +1,13 @@
-﻿<div id="team-view" data-ng-controller="TeamController" data-ng-cloak>
-    <h4>Avengers</h4>
-    <div class="team-member clearfix" data-ng-repeat="hero in team">
-        <div class="left">
-            <img data-ng-src="{{ hero.Avatar }}" class="avatar" />
-        </div>
-        <div class="left team-member-name">
-            <a href="#/team/edit/{{ hero.Id }}">{{ hero.Name }}</a>
-        </div>
-        <div class="right trash-form">
-            <img class="trash-small" src="/content/images/trash-128.png" />
-        </div>
+﻿<h4>Avengers</h4>
+<div class="team-member clearfix" data-ng-repeat="hero in team">
+    <div class="left">
+        <img data-ng-src="{{ hero.Avatar }}" class="avatar" />
     </div>
-    <a class="button" href="#/team/add">New Team Member</a>
+    <div class="left team-member-name">
+        <a href="#/team/edit/{{ hero.Id }}">{{ hero.Name }}</a>
+    </div>
+    <div class="right trash-form">
+        <img class="trash-small" src="/content/images/trash-128.png" />
+    </div>
 </div>
+<a class="button" href="#/team/add">New Team Member</a>

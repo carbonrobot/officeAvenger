@@ -1,23 +1,21 @@
-﻿<div id="missions-view" data-ng-controller="MissionController" data-ng-cloak>
-    <h4>Missions</h4>
-    <div class="mission crush" data-ng-repeat="mission in missions">
-        <div class="clearfix">
-            <div class="mission-name"><a href="#">{{ mission.Name }}</a></div>
-            <div class="right">
-                <div class="mission-duration">{{ mission.Duration }} mins</div>
-                <div class="mission-start">
-                    <button data-ng-if="!mission.MissionStart" type="submit" class="button tiny hugme">Begin</button>
-                    <span data-ng-if="mission.MissionStart&&mission.MissionCompleted">Completed</span>
-                    <span data-ng-if="mission.MissionStart&&!mission.MissionCompleted">Engaged</span>
-                </div>
-            </div>
-            <div class="right trash-form">
-                <img class="trash-small" src="/content/images/trash-128.png" />
+﻿<h4>Missions</h4>
+<div class="mission crush" data-ng-repeat="mission in missions">
+    <div class="clearfix">
+        <div class="mission-name"><a href="#">{{ mission.Name }}</a></div>
+        <div class="right">
+            <div class="mission-duration">{{ mission.Duration }} mins</div>
+            <div class="mission-start">
+                <button data-ng-if="!mission.MissionStart" type="submit" class="button tiny hugme">Begin</button>
+                <span data-ng-if="mission.MissionStart&&mission.MissionCompleted">Completed</span>
+                <span data-ng-if="mission.MissionStart&&!mission.MissionCompleted">Engaged</span>
             </div>
         </div>
-        <div class="mission-team clearfix">
-            <img data-ng-repeat="hero in mission.Team" data-ng-src="{{ hero.Avatar }}" title="{{ hero.Name }}" class="left avatar" />
+        <div class="right trash-form">
+            <img class="trash-small" src="/content/images/trash-128.png" />
         </div>
     </div>
-    <a class="button" href="#">New Mission</a>
+    <div class="mission-team clearfix">
+        <img data-ng-repeat="hero in mission.Team" data-ng-src="{{ hero.Avatar }}" title="{{ hero.Name }}" class="left avatar" />
+    </div>
 </div>
+<a class="button" href="#">New Mission</a>

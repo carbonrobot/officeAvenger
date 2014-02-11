@@ -39,6 +39,11 @@ namespace OfficeAvenger.Web
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                         "~/Scripts/vendor/angular.js",
                         "~/Scripts/vendor/angular-route.js",
+                        "~/Scripts/vendor/angular-resource.js",
+                        "~/Scripts/areas/angular/services/services.js",
+                        "~/Scripts/areas/angular/services/*.js",
+                        "~/Scripts/areas/angular/controllers/controllers.js",
+                        "~/Scripts/areas/angular/controllers/*.js",
                         "~/Scripts/areas/angular/app.js"
                         ));
         }
