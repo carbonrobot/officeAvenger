@@ -15,6 +15,7 @@
 .small { font-size: smaller; font-weight: 200; }
 .avatar { width: 48px; height: 48px; margin-right: 1.0em; }
 .clickable { cursor: pointer; }
+.ng-cloak { display: none; }
 
 /* Site logo */
 .top-bar { margin-bottom: 3.0em; }
@@ -45,3 +46,18 @@
 .trash-medium { width: 64px; height: 64px; }
 .trash-small { width: 24px; height: 24px; }
 .trash-tiny { width: 16px; height: 16px; }
+
+/* Animations */
+.animate.ng-enter,
+.animate.ng-leave {
+	-webkit-transition: 0.5s linear all;
+	transition: 0.5s linear all;
+}
+.animate.ng-enter,
+.animate.ng-leave.ng-enter-active {
+	opacity: 0;
+}
+.animate.ng-leave,
+.animate.ng-enter.ng-enter-active {
+	opacity: 1;
+}

@@ -2,7 +2,7 @@
 // ***************
 // application
 // ***************
-var app = angular.module('app', ['ngRoute', 'app.services', 'app.controllers'])
+var app = angular.module('app', ['ngRoute', 'app.services', 'app.controllers', 'ngAnimate'])
         .config(function ($routeProvider, $locationProvider) {
             $routeProvider.
                 when('/angular', {

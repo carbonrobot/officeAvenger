@@ -1,6 +1,6 @@
 ﻿<h4>Avengers</h4>
 <div class="loading-img" data-ng-if="loadingTeam"></div>
-<div class="team-member clearfix" data-ng-repeat="hero in team">
+<div class="team-member animate clearfix" data-ng-repeat="hero in team">
     <div class="left">
         <img data-ng-src="{{ hero.Avatar }}" class="avatar" />
     </div>
@@ -8,7 +8,7 @@
         <a href="/angular/team/edit/{{ hero.Id }}">{{ hero.Name }}</a>
     </div>
     <div class="right trash-form">
-        <img class="trash-small" src="/content/images/trash-128.png" />
+        <img class="trash-small" src="/content/images/trash-128.png" data-ng-click="deleteAvenger($index, hero)" />
     </div>
 </div>
 <a class="button" href="/angular/team/add">New Team Member</a>

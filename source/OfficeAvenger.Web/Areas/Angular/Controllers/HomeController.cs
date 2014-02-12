@@ -14,23 +14,5 @@ namespace OfficeAvenger.Web.Areas.Angular.Controllers
         {
             return View();
         }
-
-        [HttpPost]
-        public ActionResult Login(string username, string password)
-        {
-            var authenticated = OfficeAvenger.Web.Security.Handlers.FormsAuthentication.Authenticate(username, password, true);
-            if (!authenticated)
-            {
-                return WithError(this.RedirectToAction("Index"), "Incorrect. Do not fail again.");
-            }
-            return this.RedirectToAction("Index");
-        }
-
-        [HttpGet]
-        public ActionResult Logout()
-        {
-            OfficeAvenger.Web.Security.Handlers.FormsAuthentication.Signout();
-            return RedirectToAction("Index");
-        }
 	}
 }

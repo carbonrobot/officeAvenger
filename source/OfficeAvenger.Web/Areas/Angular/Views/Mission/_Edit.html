@@ -30,11 +30,11 @@
             <h5>Selected Team</h5>
 
             <div class="clearfix" data-ng-if="mission.Team.length > 0">
-                <form class="inline" data-ng-repeat="hero in mission.Team">
-                <input type="hidden" name="missionId" value="{{mission.Id}}" />
-                <input type="hidden" name="avengerId" value="{{hero.Id}}" />
-                <img class="avatar clickable" data-ng-src="{{hero.Avatar}}" onclick="$(this).closest('form').submit();" />
-                </form>
+                <div class="inline" data-ng-repeat="hero in mission.Team">
+                    <input type="hidden" name="missionId" value="{{mission.Id}}" />
+                    <input type="hidden" name="avengerId" value="{{hero.Id}}" />
+                    <img class="avatar clickable" data-ng-src="{{hero.Avatar}}" data-ng-click="removeHero($index, hero)" />
+                </div>
             </div>
             <div class="alert-box" data-ng-if="mission.Team.length <= 0">
                 Choose your team members for this mission.
@@ -42,11 +42,11 @@
 
             <h5>On Standby</h5>
             <div class="clearfix">
-                <form class="inline" data-ng-repeat="hero in standbyTeam">
-                <input type="hidden" name="missionId" value="{{mission.Id}}" />
-                <input type="hidden" name="avengerId" value="{{hero.Id}}" />
-                <img class="avatar clickable" data-ng-src="{{hero.Avatar}}" onclick="$(this).closest('form').submit();" />
-                </form>
+                <div class="inline" data-ng-repeat="hero in standbyTeam">
+                    <input type="hidden" name="missionId" value="{{mission.Id}}" />
+                    <input type="hidden" name="avengerId" value="{{hero.Id}}" />
+                    <img class="avatar clickable" data-ng-src="{{hero.Avatar}}" data-ng-click="addHero($index, hero)" />
+                </div>
             </div>
         </div>
 

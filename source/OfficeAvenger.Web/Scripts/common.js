@@ -26,7 +26,10 @@
         startMissionUrl: baseAddress + '/mission/start',
         addHeroUrl: baseAddress + '/mission/assign',
         removeHeroUrl: baseAddress + '/mission/remove',
-        deleteHeroUrl: baseAddress + '/team'
+        deleteHeroUrl: baseAddress + '/team',
+        loginUrl: baseAddress + '/login',
+        logoffUrl: baseAddress + '/logout',
+        agentUrl: baseAddress + '/activeagent'
     };
 
 })(window.officeAvenger = window.officeAvenger || {});

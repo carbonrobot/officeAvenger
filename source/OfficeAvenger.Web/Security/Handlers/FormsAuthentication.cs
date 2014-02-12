@@ -59,7 +59,7 @@ namespace OfficeAvenger.Web.Security.Handlers
         /// <summary>
         /// Authenticates the current agent. If successful, creates an encrypted security token storing the agents basic information.
         /// </summary>
-        public static bool Authenticate(string username, string password, bool persistent = false)
+        public static Agent Authenticate(string username, string password, bool persistent = false)
         {
             if (SecurityMatrix == null)
                 throw new InvalidOperationException("Security matrix must be configured first");
@@ -86,11 +86,16 @@ namespace OfficeAvenger.Web.Security.Handlers
                 cookie.Value = encTicket;
                 HttpContext.Current.Response.Cookies.Add(cookie);
 
-                return true;
+                // wire up the bizness
+                var user = new ClaimsPrincipal(new ClaimsIdentity(result.Agent, "Forms"));
+                HttpContext.Current.User = user;
+                System.Threading.Thread.CurrentPrincipal = user;
+
+                return result.Agent;
             }
             else
             {
-                return false;
+                return null;
             }
         }
 

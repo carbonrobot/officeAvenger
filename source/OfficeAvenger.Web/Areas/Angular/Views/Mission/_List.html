@@ -1,18 +1,18 @@
 ﻿<h4>Missions</h4>
 <div class="loading-img" data-ng-if="loadingMissions"></div>
-<div class="mission crush" data-ng-repeat="mission in missions">
+<div class="mission crush animate" data-ng-repeat="mission in missions">
     <div class="clearfix">
         <div class="mission-name"><a href="/angular/mission/edit/{{mission.Id}}">{{ mission.Name }}</a></div>
         <div class="right">
             <div class="mission-duration">{{ mission.Duration }} mins</div>
             <div class="mission-start">
-                <button data-ng-if="!mission.MissionStart" type="submit" class="button tiny hugme">Begin</button>
+                <button data-ng-if="!mission.MissionStart" class="button tiny hugme" data-ng-click="startMission($index, mission)">Begin</button>
                 <span data-ng-if="mission.MissionStart&&mission.MissionCompleted">Completed</span>
                 <span data-ng-if="mission.MissionStart&&!mission.MissionCompleted">Engaged</span>
             </div>
         </div>
         <div class="right trash-form">
-            <img class="trash-small" src="/content/images/trash-128.png" />
+            <img class="trash-small" src="/content/images/trash-128.png" data-ng-click="deleteMission($index, mission)" />
         </div>
     </div>
     <div class="mission-team clearfix">

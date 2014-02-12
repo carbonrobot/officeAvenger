@@ -3,22 +3,58 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Framework = ViewBag.Title = "Angular";
 }
-@if (User.Identity.IsAuthenticated)
-{
-    @Html.Partial("_Agent")
-}
-<div data-ng-app="app">
-    @if (User.Identity.IsAuthenticated)
-    {
-        <div ng-view></div>
-    }
-    else
-    {
-        @Html.Partial("_Login")
-    }
 
-    @RenderBody()
+<div data-ng-app="app" data-ng-controller="AppController">
+    <div class="ng-cloak" data-ng-hide="isLoading">
+
+        <div data-ng-show="isLoggedIn">
+            <div class="agent-panel">
+                <div class="row">
+                    <div class="columns small-12">
+                        Welcome, {{ loggedInUser.Name }} <a href="#" class="small" data-ng-click="logout()">Logout</a>
+                    </div>
+                </div>
+            </div>
+            <div ng-view></div>
+        </div>
+
+        <!-- Login form -->
+        <div data-ng-hide="isLoggedIn">
+            <form data-ng-submit="login()">
+            <div class="row">
+                <div class="small-4 small-offset-4 column">
+                    <h4>Login</h4>
+                    <div class="alert-box warning" data-ng-if="loginFormData.error">
+                        {{ loginFormData.error }}
+                    </div>
+                    <div class="panel">
+                        <div class="row">
+                            <div class="small-12 column">
+                                <label>Username</label>
+                                <input type="text" placeholder="comic" name="username" data-ng-model="loginFormData.username" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="small-12 column">
+                                <label>Password</label>
+                                <input type="text" placeholder="superstar" name="password" data-ng-model="loginFormData.password" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="small-12 column">
+                                <input type="submit" class="small button right" value="Login" />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            </form>
+        </div>
+
+    </div>
 </div>
+@RenderBody()
 @section scripts{
     @Scripts.Render("~/bundles/angular")
 }

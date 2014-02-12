@@ -9,6 +9,8 @@
     {
         public static void Register(HttpConfiguration config)
         {
+            config.MapHttpAttributeRoutes();
+
             config.Routes.MapHttpRoute(
                 name: "DefaultRoutes",
                 routeTemplate: "api/{controller}/{id}",

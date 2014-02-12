@@ -21,8 +21,8 @@ namespace OfficeAvenger.Web.Areas.Knockout.Controllers
         [HttpPost]
         public ActionResult Login(string username, string password)
         {
-            var authenticated = OfficeAvenger.Web.Security.Handlers.FormsAuthentication.Authenticate(username, password, true);
-            if (!authenticated)
+            var agent = OfficeAvenger.Web.Security.Handlers.FormsAuthentication.Authenticate(username, password, true);
+            if (agent == null)
             {
                 return WithError(this.RedirectToAction("Index"), "Incorrect. Do not fail again.");
             }

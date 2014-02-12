@@ -40,6 +40,7 @@ namespace OfficeAvenger.Web
                         "~/Scripts/vendor/angular.js",
                         "~/Scripts/vendor/angular-route.js",
                         "~/Scripts/vendor/angular-resource.js",
+                        "~/Scripts/vendor/angular-animate.js",
                         "~/Scripts/areas/angular/app.js",
                         "~/Scripts/areas/angular/services/*.js",
                         "~/Scripts/areas/angular/controllers/*.js"
